@@ -38,17 +38,19 @@ class ViewController: UIViewController, FrostedSidebarDelegate {
 			UIColor(red: 119/255, green: 152/255, blue: 255/255, alpha: 1)],
 		selectedItemIndices: NSIndexSet())
 	
-	@IBAction func onBurger() {
+	override func viewDidLoad() {
 		frostedSidebar.delegate = self
-            
+		
 		frostedSidebar.calloutsAlwaysSelected = true
-//			frostedSidebar!.showFromRight = true
-//			frostedSidebar!.isSingleSelect = true
-            
+		//			frostedSidebar!.showFromRight = true
+		//			frostedSidebar!.isSingleSelect = true
+		
 		frostedSidebar.setActionsForIndex(0, action: {
 			self.frostedSidebar.dismissAnimated(true, completion: nil)
-		})
-
+			})
+	}
+	
+	@IBAction func onBurger() {
         frostedSidebar.showInViewController(self, animated: true)
     }
 
