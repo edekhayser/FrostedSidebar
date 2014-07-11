@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6185.7" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6181.2"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="FrostedSidebar" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" image="Background.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="FMc-fA-TD3">
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hMY-9x-B2C">
+                                <rect key="frame" x="20" y="20" width="47" height="42"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" image="burger.png"/>
+                                <connections>
+                                    <action selector="onBurger" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Tic-LE-hHc"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="FMc-fA-TD3" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="7AM-E3-2fy"/>
+                            <constraint firstAttribute="bottom" secondItem="FMc-fA-TD3" secondAttribute="bottom" id="9tF-H3-T9s"/>
+                            <constraint firstAttribute="trailing" secondItem="FMc-fA-TD3" secondAttribute="trailing" id="Um1-FV-8h7"/>
+                            <constraint firstItem="FMc-fA-TD3" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="qIv-vN-ZgI"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Background.jpg" width="63" height="111"/>
+        <image name="burger.png" width="19" height="17"/>
+    </resources>
+</document>
