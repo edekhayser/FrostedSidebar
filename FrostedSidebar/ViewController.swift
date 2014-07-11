@@ -10,52 +10,46 @@ import UIKit
 
 class ViewController: UIViewController, FrostedSidebarDelegate {
     
-    var frostedSidebar: FrostedSidebar?
-    
+	var frostedSidebar: FrostedSidebar = FrostedSidebar(itemImages: [
+			UIImage(named: "gear"),
+			UIImage(named: "globe"),
+			UIImage(named: "profile"),
+			UIImage(named: "star"),
+			UIImage(named: "gear"),
+			UIImage(named: "globe"),
+			UIImage(named: "profile"),
+			UIImage(named: "star"),
+			UIImage(named: "gear"),
+			UIImage(named: "globe"),
+			UIImage(named: "profile"),
+			UIImage(named: "star")],
+		colors: [
+			UIColor(red: 240/255, green: 159/255, blue: 254/255, alpha: 1),
+			UIColor(red: 255/255, green: 137/255, blue: 167/255, alpha: 1),
+			UIColor(red: 126/255, green: 242/255, blue: 195/255, alpha: 1),
+			UIColor(red: 119/255, green: 152/255, blue: 255/255, alpha: 1),
+			UIColor(red: 240/255, green: 159/255, blue: 254/255, alpha: 1),
+			UIColor(red: 255/255, green: 137/255, blue: 167/255, alpha: 1),
+			UIColor(red: 126/255, green: 242/255, blue: 195/255, alpha: 1),
+			UIColor(red: 119/255, green: 152/255, blue: 255/255, alpha: 1),
+			UIColor(red: 240/255, green: 159/255, blue: 254/255, alpha: 1),
+			UIColor(red: 255/255, green: 137/255, blue: 167/255, alpha: 1),
+			UIColor(red: 126/255, green: 242/255, blue: 195/255, alpha: 1),
+			UIColor(red: 119/255, green: 152/255, blue: 255/255, alpha: 1)],
+		selectedItemIndices: NSIndexSet())
+	
 	@IBAction func onBurger() {
-        if !frostedSidebar{
-            let images = [
-                UIImage(named: "gear"),
-                UIImage(named: "globe"),
-                UIImage(named: "profile"),
-                UIImage(named: "star"),
-                UIImage(named: "gear"),
-                UIImage(named: "globe"),
-                UIImage(named: "profile"),
-                UIImage(named: "star"),
-                UIImage(named: "gear"),
-                UIImage(named: "globe"),
-                UIImage(named: "profile"),
-                UIImage(named: "star")]
-            let colors = [
-                UIColor(red: 240/255, green: 159/255, blue: 254/255, alpha: 1),
-                UIColor(red: 255/255, green: 137/255, blue: 167/255, alpha: 1),
-                UIColor(red: 126/255, green: 242/255, blue: 195/255, alpha: 1),
-                UIColor(red: 119/255, green: 152/255, blue: 255/255, alpha: 1),
-                UIColor(red: 240/255, green: 159/255, blue: 254/255, alpha: 1),
-                UIColor(red: 255/255, green: 137/255, blue: 167/255, alpha: 1),
-                UIColor(red: 126/255, green: 242/255, blue: 195/255, alpha: 1),
-                UIColor(red: 119/255, green: 152/255, blue: 255/255, alpha: 1),
-                UIColor(red: 240/255, green: 159/255, blue: 254/255, alpha: 1),
-                UIColor(red: 255/255, green: 137/255, blue: 167/255, alpha: 1),
-                UIColor(red: 126/255, green: 242/255, blue: 195/255, alpha: 1),
-                UIColor(red: 119/255, green: 152/255, blue: 255/255, alpha: 1)]
+		frostedSidebar.delegate = self
             
-            frostedSidebar = FrostedSidebar(itemImages: images, colors: colors, selectedItemIndices: NSIndexSet())
-//            frostedSidebar = FrostedSidebar(itemImages: images, colors: nil, selectedItemIndices: NSIndexSet())
-            
-            frostedSidebar!.delegate = self
-            
-            frostedSidebar!.calloutsAlwaysSelected = true
+		frostedSidebar.calloutsAlwaysSelected = true
 //			frostedSidebar!.showFromRight = true
 //			frostedSidebar!.isSingleSelect = true
             
-            frostedSidebar!.setActionsForIndex(0, action: {
-                self.frostedSidebar!.dismissAnimated(true, completion: nil)
-                })
-        }
+		frostedSidebar.setActionsForIndex(0, action: {
+			self.frostedSidebar.dismissAnimated(true, completion: nil)
+		})
 
-        frostedSidebar!.showInViewController(self, animated: true)
+        frostedSidebar.showInViewController(self, animated: true)
     }
 
     func sidebar(sidebar: FrostedSidebar, willShowOnScreenAnimated animated: Bool){
