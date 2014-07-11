@@ -240,13 +240,12 @@ class FrostedSidebar: UIViewController {
             completion(true)
         }
         
-        let initDelay: CGFloat = 0
         for (index, item) in enumerate(itemViews){
             item.layer.transform = CATransform3DMakeScale(0.3, 0.3, 1)
             item.alpha = 0
             item.originalBackgroundColor = itemBackgroundColor
             item.layer.borderWidth = borderWidth
-            animateSpringWithView(item, idx: index, initDelay: initDelay)
+            animateSpringWithView(item, idx: index, initDelay: animationDuration)
         }
         
     }
