@@ -39,6 +39,7 @@ class ViewController: UIViewController, FrostedSidebarDelegate {
 		selectedItemIndices: NSIndexSet())
 	
 	override func viewDidLoad() {
+		super.viewDidLoad()
 		frostedSidebar.delegate = self
 		
 		frostedSidebar.calloutsAlwaysSelected = true
