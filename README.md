@@ -3,7 +3,7 @@ FrostedSidebar
 
 Hamburger Menu using Swift and iOS 8 API's
 
-Heavily influenced by @rnystrom's [RNFrostedSidebar](https://github.com/rnystrom/RNFrostedSidebar)
+Heavily influenced by @_ryannystrom's [RNFrostedSidebar](https://github.com/rnystrom/RNFrostedSidebar)
 
 This implementation uses iOS 8's new UIVisualEffectView to apply the blur to the sidebar. Among other changes, this sidebar has a view that dims the background to shift the focus to the presented content.
 
