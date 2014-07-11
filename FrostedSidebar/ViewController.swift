@@ -43,8 +43,8 @@ class ViewController: UIViewController, FrostedSidebarDelegate {
 		frostedSidebar.delegate = self
 		
 		frostedSidebar.calloutsAlwaysSelected = true
-		//			frostedSidebar!.showFromRight = true
-		//			frostedSidebar!.isSingleSelect = true
+		//			frostedSidebar.showFromRight = true
+		//			frostedSidebar.isSingleSelect = true
 		
 		frostedSidebar.setActionsForIndex(0, action: {
 			self.frostedSidebar.dismissAnimated(true, completion: nil)
