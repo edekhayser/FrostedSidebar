@@ -7,11 +7,11 @@ Heavily influenced by @rnystrom's [RNFrostedSidebar](https://github.com/rnystrom
 
 This implementation uses iOS 8's new UIVisualEffectView to apply the blur to the sidebar. Among other changes, this sidebar has a view that dims the background to shift the focus to the presented content.
 
-<p align="center"><img title="Open and close animation" src="https://github.com/edekhayser/FrostedSidebar/blob/master/entrance.gif"/></p>
+<p align="center"><img title="Open and close animation" src="https://raw.github.com/edekhayser/FrostedSidebar/blob/master/entrance.gif"/></p>
 
 The buttons have the same ring effect on click. The buttons are more customizable as I will go into later.
 
-<p align="center"><img title="Button click animation" src="https://github.com/edekhayser/FrostedSidebar/blob/master/callouts.gif"/></p>
+<p align="center"><img title="Button click animation" src="https://raw.github.com/edekhayser/FrostedSidebar/blob/master/callouts.gif"/></p>
 
 ##Usage##
 
