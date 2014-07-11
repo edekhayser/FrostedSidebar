@@ -247,7 +247,6 @@ class FrostedSidebar: UIViewController {
             item.layer.borderWidth = borderWidth
             animateSpringWithView(item, idx: index, initDelay: animationDuration)
         }
-        
     }
     
     func dismissAnimated(animated: Bool, completion: ((Bool) -> Void)?){
