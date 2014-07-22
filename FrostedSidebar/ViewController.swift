@@ -46,9 +46,7 @@ class ViewController: UIViewController, FrostedSidebarDelegate {
 		//			frostedSidebar.showFromRight = true
 		//			frostedSidebara.isSingleSelect = true
 		
-		frostedSidebar.setActionsForIndex(0, action: {
-			self.frostedSidebar.dismissAnimated(true, completion: nil)
-			})
+		frostedSidebar.actionForIndex[0] = { self.frostedSidebar.dismissAnimated(true, completion: nil) }
 	}
 	
 	@IBAction func onBurger() {

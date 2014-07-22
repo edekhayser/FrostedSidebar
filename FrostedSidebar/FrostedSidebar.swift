@@ -32,6 +32,7 @@ public class FrostedSidebar: UIViewController {
     public var itemBackgroundColor:     UIColor                     = UIColor(white: 1, alpha: 0.25)
     public var borderWidth:             CGFloat                     = 2
     public var delegate:                FrostedSidebarDelegate?     = nil
+    public  var actionForIndex:         [Int : ()->()]              = [:]
     //Only one of these properties can be used at a time. If one is true, the other automatically is false
     public var isSingleSelect:          Bool                        = false{
         didSet{
@@ -57,7 +58,7 @@ public class FrostedSidebar: UIViewController {
     private var borderColors:           [UIColor]?                  = nil
     private var itemViews:              [CalloutItem]               = []
     private var selectedIndices:        NSMutableIndexSet           = NSMutableIndexSet()
-    private var actionForIndex:         [Int : ()->()]              = [:]
+   
     
     //MARK: Public Methods
     
@@ -94,18 +95,6 @@ public class FrostedSidebar: UIViewController {
         
         super.init(nibName: nil, bundle: nil)
         
-    }
-    
-    public func setActionsForIndex(index: Int, action: () -> Void){
-        actionForIndex[index] = action
-    }
-    
-    public func removeActionForIndex(index: Int){
-        actionForIndex.removeValueForKey(index)
-    }
-    
-    public func removeAllActions(){
-        actionForIndex.removeAll(keepCapacity: false)
     }
     
     public override func loadView() {

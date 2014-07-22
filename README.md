@@ -41,7 +41,7 @@ calloutsAlwaysSelected and isSingleSelect are mutually exclusive. If one is true
 The buttons can be set to perform a closure using
 
 ```swift
-frostedSidebar.setActionsForIndex( idx, action: { //actions } )
+frostedSidebar.actionForIndex[idx] = { /* actions */ }
 ```
 
 To show the sidebar, use the following code in your view controller:
