@@ -18,64 +18,11 @@ public protocol FrostedSidebarDelegate{
     func sidebar(sidebar: FrostedSidebar, didEnable itemEnabled: Bool, itemAtIndex index: Int)
 }
 
-private class CalloutItem: UIView{
-    var imageView:              UIImageView                 = UIImageView()
-    var itemIndex:              Int
-    var originalBackgroundColor:UIColor? {
-    didSet{
-        self.backgroundColor = originalBackgroundColor
-    }
-    }
-    
-    init(index: Int){
-        imageView.backgroundColor = UIColor.clearColor()
-        imageView.contentMode = UIViewContentMode.ScaleAspectFit
-        itemIndex = index
-        super.init(frame: CGRect.zeroRect)
-        addSubview(imageView)
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        let inset: CGFloat = bounds.size.height/2
-        imageView.frame = CGRect(x: 0, y: 0, width: inset, height: inset)
-        imageView.center = CGPoint(x: inset, y: inset)
-    }
-    
-    override func touchesBegan(touches: NSSet!, withEvent event: UIEvent!) {
-        super.touchesBegan(touches, withEvent: event)
-        
-        var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
-        let darkenFactor: CGFloat = 0.3
-        var darkerColor: UIColor
-        if originalBackgroundColor?.getRed(&r, green: &g, blue: &b, alpha: &a){
-            darkerColor = UIColor(red: max(r - darkenFactor, 0), green: max(g - darkenFactor, 0), blue: max(b - darkenFactor, 0), alpha: a)
-        } else if originalBackgroundColor?.getWhite(&r, alpha: &a){
-            darkerColor = UIColor(white: max(r - darkenFactor, 0), alpha: a)
-        } else{
-            darkerColor = UIColor.clearColor()
-            assert(false, "Item color should be RBG of White/Alpha in order to darken the button")
-        }
-        backgroundColor = darkerColor
-    }
-    
-    override func touchesEnded(touches: NSSet!, withEvent event: UIEvent!) {
-        super.touchesEnded(touches, withEvent: event)
-        backgroundColor = originalBackgroundColor
-    }
-    
-    override func touchesCancelled(touches: NSSet!, withEvent event: UIEvent!) {
-        super.touchesCancelled(touches, withEvent: event)
-        backgroundColor = originalBackgroundColor
-    }
-    
-    
-    
-}
-
 var sharedSidebar: FrostedSidebar?
 
 public class FrostedSidebar: UIViewController {
+    
+    //MARK: Public Properties
     
     public var width:                   CGFloat                     = 145.0
     public var showFromRight:           Bool                        = false
@@ -100,6 +47,8 @@ public class FrostedSidebar: UIViewController {
         }
     }
  
+    //MARK: Private Properties
+    
     private var contentView:            UIScrollView                = UIScrollView()
     private var blurView:               UIVisualEffectView          = UIVisualEffectView(effect: UIBlurEffect(style: .Dark))
     private var dimView:                UIView                      = UIView()
@@ -109,6 +58,8 @@ public class FrostedSidebar: UIViewController {
     private var itemViews:              [CalloutItem]               = []
     private var selectedIndices:        NSMutableIndexSet           = NSMutableIndexSet()
     private var actionForIndex:         [Int : ()->()]              = [:]
+    
+    //MARK: Public Methods
     
     public init(itemImages: [UIImage], colors: [UIColor]?, selectedItemIndices: NSIndexSet?){
         contentView.alwaysBounceHorizontal = false
@@ -270,6 +221,63 @@ public class FrostedSidebar: UIViewController {
             completionBlock(true)
         }
     }
+    
+    //MARK: Private Classes
+    
+    private class CalloutItem: UIView{
+        var imageView:              UIImageView                 = UIImageView()
+        var itemIndex:              Int
+        var originalBackgroundColor:UIColor? {
+        didSet{
+            self.backgroundColor = originalBackgroundColor
+        }
+        }
+        
+        init(index: Int){
+            imageView.backgroundColor = UIColor.clearColor()
+            imageView.contentMode = UIViewContentMode.ScaleAspectFit
+            itemIndex = index
+            super.init(frame: CGRect.zeroRect)
+            addSubview(imageView)
+        }
+        
+        override func layoutSubviews() {
+            super.layoutSubviews()
+            let inset: CGFloat = bounds.size.height/2
+            imageView.frame = CGRect(x: 0, y: 0, width: inset, height: inset)
+            imageView.center = CGPoint(x: inset, y: inset)
+        }
+        
+        override func touchesBegan(touches: NSSet!, withEvent event: UIEvent!) {
+            super.touchesBegan(touches, withEvent: event)
+            
+            var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
+            let darkenFactor: CGFloat = 0.3
+            var darkerColor: UIColor
+            if originalBackgroundColor?.getRed(&r, green: &g, blue: &b, alpha: &a){
+                darkerColor = UIColor(red: max(r - darkenFactor, 0), green: max(g - darkenFactor, 0), blue: max(b - darkenFactor, 0), alpha: a)
+            } else if originalBackgroundColor?.getWhite(&r, alpha: &a){
+                darkerColor = UIColor(white: max(r - darkenFactor, 0), alpha: a)
+            } else{
+                darkerColor = UIColor.clearColor()
+                assert(false, "Item color should be RBG of White/Alpha in order to darken the button")
+            }
+            backgroundColor = darkerColor
+        }
+        
+        override func touchesEnded(touches: NSSet!, withEvent event: UIEvent!) {
+            super.touchesEnded(touches, withEvent: event)
+            backgroundColor = originalBackgroundColor
+        }
+        
+        override func touchesCancelled(touches: NSSet!, withEvent event: UIEvent!) {
+            super.touchesCancelled(touches, withEvent: event)
+            backgroundColor = originalBackgroundColor
+        }
+        
+    }
+    
+    //MARK: Private Methods
     
     private func animateSpringWithView(view: CalloutItem, idx: Int, initDelay: CGFloat){
         let delay: NSTimeInterval = NSTimeInterval(initDelay) + NSTimeInterval(idx) * 0.1
