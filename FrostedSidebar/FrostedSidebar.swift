@@ -9,7 +9,7 @@
 import UIKit
 import QuartzCore
 
-protocol FrostedSidebarDelegate{
+public protocol FrostedSidebarDelegate{
     func sidebar(sidebar: FrostedSidebar, willShowOnScreenAnimated animated: Bool)
     func sidebar(sidebar: FrostedSidebar, didShowOnScreenAnimated animated: Bool)
     func sidebar(sidebar: FrostedSidebar, willDismissFromScreenAnimated animated: Bool)
@@ -18,7 +18,7 @@ protocol FrostedSidebarDelegate{
     func sidebar(sidebar: FrostedSidebar, didEnable itemEnabled: Bool, itemAtIndex index: Int)
 }
 
-class CalloutItem: UIView{
+private class CalloutItem: UIView{
     var imageView:              UIImageView                 = UIImageView()
     var itemIndex:              Int
     var originalBackgroundColor:UIColor? {
@@ -73,42 +73,44 @@ class CalloutItem: UIView{
     
 }
 
-class FrostedSidebar: UIViewController {
+var sharedSidebar: FrostedSidebar?
+
+public class FrostedSidebar: UIViewController {
     
-    var width:                  CGFloat                     = 145
-    var showFromRight:          Bool                        = false
-    var animationDuration:      CGFloat                     = 0.25
-    var itemSize:               CGSize                      = CGSizeMake(90, 90)
-    var tintColor:              UIColor                     = UIColor(white: 0.2, alpha: 0.73)
-    var itemBackgroundColor:    UIColor                     = UIColor(white: 1, alpha: 0.25)
-    var borderWidth:            CGFloat                     = 2
-    var delegate:               FrostedSidebarDelegate?     = nil
+    public var width:                   CGFloat                     = 145.0
+    public var showFromRight:           Bool                        = false
+    public var animationDuration:       CGFloat                     = 0.25
+    public var itemSize:                CGSize                      = CGSize(width: 90.0, height: 90.0)
+    public var tintColor:               UIColor                     = UIColor(white: 0.2, alpha: 0.73)
+    public var itemBackgroundColor:     UIColor                     = UIColor(white: 1, alpha: 0.25)
+    public var borderWidth:             CGFloat                     = 2
+    public var delegate:                FrostedSidebarDelegate?     = nil
     //Only one of these properties can be used at a time. If one is true, the other automatically is false
-    var isSingleSelect:         Bool                        = false{
-    didSet{
-        if isSingleSelect{ calloutsAlwaysSelected = false }
-    }
-    }
-    var calloutsAlwaysSelected: Bool                        = false{
-    didSet{
-        if calloutsAlwaysSelected{
-            isSingleSelect = false
-            selectedIndices = NSMutableIndexSet(indexesInRange: NSRange(location: 0,length: images.count) )
+    public var isSingleSelect:          Bool                        = false{
+        didSet{
+            if isSingleSelect{ calloutsAlwaysSelected = false }
         }
     }
+    public var calloutsAlwaysSelected:  Bool                        = false{
+        didSet{
+            if calloutsAlwaysSelected{
+                isSingleSelect = false
+                selectedIndices = NSMutableIndexSet(indexesInRange: NSRange(location: 0,length: images.count) )
+            }
+        }
     }
  
-    var contentView:            UIScrollView                = UIScrollView()
-    var blurView:               UIVisualEffectView          = UIVisualEffectView(effect: UIBlurEffect(style: .Dark))
-    var dimView:                UIView                      = UIView()
-    var tapGesture:             UITapGestureRecognizer?     = nil
-    var images:                 [UIImage]                   = []
-    var borderColors:           [UIColor]?                  = nil
-    var itemViews:              [CalloutItem]               = []
-    var selectedIndices:        NSMutableIndexSet           = NSMutableIndexSet()
-    var actionForIndex:         [Int : ()->()]              = [:]
+    private var contentView:            UIScrollView                = UIScrollView()
+    private var blurView:               UIVisualEffectView          = UIVisualEffectView(effect: UIBlurEffect(style: .Dark))
+    private var dimView:                UIView                      = UIView()
+    private var tapGesture:             UITapGestureRecognizer?     = nil
+    private var images:                 [UIImage]                   = []
+    private var borderColors:           [UIColor]?                  = nil
+    private var itemViews:              [CalloutItem]               = []
+    private var selectedIndices:        NSMutableIndexSet           = NSMutableIndexSet()
+    private var actionForIndex:         [Int : ()->()]              = [:]
     
-    init(itemImages: [UIImage], colors: [UIColor]?, selectedItemIndices: NSIndexSet?){
+    public init(itemImages: [UIImage], colors: [UIColor]?, selectedItemIndices: NSIndexSet?){
         contentView.alwaysBounceHorizontal = false
         contentView.alwaysBounceVertical = true
         contentView.bounces = true
@@ -143,19 +145,19 @@ class FrostedSidebar: UIViewController {
         
     }
     
-    func setActionsForIndex(index: Int, action: () -> Void){
+    public func setActionsForIndex(index: Int, action: () -> Void){
         actionForIndex[index] = action
     }
     
-    func removeActionForIndex(index: Int){
+    public func removeActionForIndex(index: Int){
         actionForIndex.removeValueForKey(index)
     }
     
-    func removeAllActions(){
+    public func removeAllActions(){
         actionForIndex.removeAll(keepCapacity: false)
     }
     
-    override func loadView() {
+    public override func loadView() {
         super.loadView()
         view.backgroundColor = UIColor.clearColor()
         view.addSubview(dimView)
@@ -165,15 +167,15 @@ class FrostedSidebar: UIViewController {
         view.addGestureRecognizer(tapGesture!)
     }
     
-    override func shouldAutorotate() -> Bool {
+    public override func shouldAutorotate() -> Bool {
         return true
     }
     
-    override func supportedInterfaceOrientations() -> Int {
+    public override func supportedInterfaceOrientations() -> Int {
         return Int(UIInterfaceOrientationMask.All.toRaw())
     }
     
-    override func willAnimateRotationToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+    public override func willAnimateRotationToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
         super.willAnimateRotationToInterfaceOrientation(toInterfaceOrientation, duration: duration)
         
         if isViewLoaded(){
@@ -181,22 +183,15 @@ class FrostedSidebar: UIViewController {
         }
     }
     
-    func animateSpringWithView(view: CalloutItem, idx: Int, initDelay: CGFloat){
-        let delay: NSTimeInterval = NSTimeInterval(initDelay) + NSTimeInterval(idx) * 0.1
-        UIView.animateWithDuration(0.5,
-            delay: delay,
-            usingSpringWithDamping: 10.0,
-            initialSpringVelocity: 50.0,
-            options: UIViewAnimationOptions.BeginFromCurrentState,
-            animations: {
-                view.layer.transform = CATransform3DIdentity
-                view.alpha = 1
-            },
-            completion: nil)
-    }
-    
-    func showInViewController(viewController: UIViewController, animated: Bool){
+    public func showInViewController(viewController: UIViewController, animated: Bool){
+        if let bar = sharedSidebar{
+            bar.dismissAnimated(false, completion: nil)
+        }
+        
         delegate?.sidebar(self, willShowOnScreenAnimated: animated)
+        
+        sharedSidebar = self
+        
         addToParentViewController(viewController, callingAppearanceMethods: true)
         view.frame = viewController.view.bounds
         
@@ -249,7 +244,7 @@ class FrostedSidebar: UIViewController {
         }
     }
     
-    func dismissAnimated(animated: Bool, completion: ((Bool) -> Void)?){
+    public func dismissAnimated(animated: Bool, completion: ((Bool) -> Void)?){
         let completionBlock: (Bool) -> Void = {finished in
             self.removeFromParentViewControllerCallingAppearanceMethods(true)
             self.delegate?.sidebar(self, didDismissFromScreenAnimated: true)
@@ -276,7 +271,21 @@ class FrostedSidebar: UIViewController {
         }
     }
     
-    func handleTap(recognizer: UITapGestureRecognizer){
+    private func animateSpringWithView(view: CalloutItem, idx: Int, initDelay: CGFloat){
+        let delay: NSTimeInterval = NSTimeInterval(initDelay) + NSTimeInterval(idx) * 0.1
+        UIView.animateWithDuration(0.5,
+            delay: delay,
+            usingSpringWithDamping: 10.0,
+            initialSpringVelocity: 50.0,
+            options: UIViewAnimationOptions.BeginFromCurrentState,
+            animations: {
+                view.layer.transform = CATransform3DIdentity
+                view.alpha = 1
+            },
+            completion: nil)
+    }
+    
+    @objc private func handleTap(recognizer: UITapGestureRecognizer){
         let location = recognizer.locationInView(view)
         if !CGRectContainsPoint(contentView.frame, location){
             dismissAnimated(true, completion: nil)
@@ -288,7 +297,7 @@ class FrostedSidebar: UIViewController {
         }
     }
     
-    func didTapItemAtIndex(index: Int){
+    private func didTapItemAtIndex(index: Int){
         let didEnable = !selectedIndices.containsIndex(index)
         if borderColors{
             let stroke = borderColors![index]
@@ -348,16 +357,16 @@ class FrostedSidebar: UIViewController {
         delegate?.sidebar(self, didEnable: didEnable, itemAtIndex: index)
     }
     
-    func layoutSubviews(){
+    private func layoutSubviews(){
         let x = showFromRight ? parentViewController.view.bounds.size.width - width : 0
         contentView.frame = CGRect(x: x, y: 0, width: width, height: parentViewController.view.bounds.size.height)
         blurView.frame = contentView.frame
         layoutItems()
     }
     
-    func layoutItems(){
-        let leftPadding = (width - itemSize.width) / 2
-        let topPadding = leftPadding
+    private func layoutItems(){
+        let leftPadding: CGFloat = (width - itemSize.width) / 2
+        let topPadding: CGFloat = leftPadding
         for (index, item) in enumerate(itemViews){
             let idx: CGFloat = CGFloat(index)
             let frame = CGRect(x: leftPadding, y: topPadding*idx + itemSize.height*idx + topPadding, width:itemSize.width, height: itemSize.height)
@@ -375,7 +384,7 @@ class FrostedSidebar: UIViewController {
         contentView.contentSize = CGSizeMake(0, itemCount * (itemSize.height + topPadding) + topPadding)
     }
     
-    func indexOfTap(location: CGPoint) -> Int? {
+    private func indexOfTap(location: CGPoint) -> Int? {
         var index: Int?
         for (idx, item) in enumerate(itemViews){
             if CGRectContainsPoint(item.frame, location){
@@ -386,7 +395,7 @@ class FrostedSidebar: UIViewController {
         return index
     }
     
-    func addToParentViewController(viewController: UIViewController, callingAppearanceMethods: Bool){
+    private func addToParentViewController(viewController: UIViewController, callingAppearanceMethods: Bool){
         if parentViewController{
             removeFromParentViewControllerCallingAppearanceMethods(callingAppearanceMethods)
         }
@@ -401,7 +410,7 @@ class FrostedSidebar: UIViewController {
         }
     }
     
-    func removeFromParentViewControllerCallingAppearanceMethods(callAppearanceMethods: Bool){
+    private func removeFromParentViewControllerCallingAppearanceMethods(callAppearanceMethods: Bool){
 	
 		if callAppearanceMethods{
             beginAppearanceTransition(false, animated: false)
