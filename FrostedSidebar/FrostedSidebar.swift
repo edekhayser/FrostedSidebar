@@ -32,7 +32,8 @@ public class FrostedSidebar: UIViewController {
     public var itemBackgroundColor:     UIColor                     = UIColor(white: 1, alpha: 0.25)
     public var borderWidth:             CGFloat                     = 2
     public var delegate:                FrostedSidebarDelegate?     = nil
-    public  var actionForIndex:         [Int : ()->()]              = [:]
+    public var actionForIndex:         [Int : ()->()]              = [:]
+    public var selectedIndices:        NSMutableIndexSet           = NSMutableIndexSet()
     //Only one of these properties can be used at a time. If one is true, the other automatically is false
     public var isSingleSelect:          Bool                        = false{
         didSet{
@@ -57,8 +58,6 @@ public class FrostedSidebar: UIViewController {
     private var images:                 [UIImage]                   = []
     private var borderColors:           [UIColor]?                  = nil
     private var itemViews:              [CalloutItem]               = []
-    private var selectedIndices:        NSMutableIndexSet           = NSMutableIndexSet()
-   
     
     //MARK: Public Methods
     
