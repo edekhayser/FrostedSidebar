@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>C9A96330-4869-44C2-A46D-9B9A56C40D87</string>
+	<key>IDESourceControlProjectName</key>
+	<string>FrostedSidebar</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>4B4BAACA98DEB00554F1C47B8448075ADE3181B2</key>
+		<string>https://github.com/edekhayser/UITableView-RowConvenience.git</string>
+		<key>9DD84A14490C7232C05D5DFBA38001794CC46892</key>
+		<string>https://github.com/edekhayser/FrostedSidebar.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>FrostedSidebar.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>4B4BAACA98DEB00554F1C47B8448075ADE3181B2</key>
+		<string>../../..</string>
+		<key>9DD84A14490C7232C05D5DFBA38001794CC46892</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/edekhayser/FrostedSidebar.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>9DD84A14490C7232C05D5DFBA38001794CC46892</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>4B4BAACA98DEB00554F1C47B8448075ADE3181B2</string>
+			<key>IDESourceControlWCCName</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>9DD84A14490C7232C05D5DFBA38001794CC46892</string>
+			<key>IDESourceControlWCCName</key>
+			<string>FrostedSidebar</string>
+		</dict>
+	</array>
+</dict>
+</plist>

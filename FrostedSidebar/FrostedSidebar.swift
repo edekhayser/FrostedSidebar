@@ -61,6 +61,10 @@ public class FrostedSidebar: UIViewController {
     
     //MARK: Public Methods
     
+    required public init(coder aDecoder: NSCoder!) {
+        super.init(coder: aDecoder)
+    }
+    
     public init(itemImages: [UIImage], colors: [UIColor]?, selectedItemIndices: NSIndexSet?){
         contentView.alwaysBounceHorizontal = false
         contentView.alwaysBounceVertical = true
@@ -68,11 +72,11 @@ public class FrostedSidebar: UIViewController {
         contentView.clipsToBounds = false
         contentView.showsHorizontalScrollIndicator = false
         contentView.showsVerticalScrollIndicator = false
-        if colors{
+        if colors != nil{
             assert(itemImages.count == colors!.count, "If item color are supplied, the itemImages and colors arrays must be of the same size.")
         }
         
-        selectedIndices = selectedItemIndices ? NSMutableIndexSet(indexSet: selectedItemIndices!) : NSMutableIndexSet()
+        selectedIndices = selectedItemIndices != nil ? NSMutableIndexSet(indexSet: selectedItemIndices!) : NSMutableIndexSet()
         borderColors = colors
         images = itemImages
         
@@ -81,8 +85,8 @@ public class FrostedSidebar: UIViewController {
             view.clipsToBounds = true
             view.imageView.image = image
             contentView.addSubview(view)
-            itemViews += view
-            if borderColors{
+            itemViews += [view]
+            if borderColors != nil{
                 if selectedIndices.containsIndex(index){
                     let color = borderColors![index]
                     view.layer.borderColor = color.CGColor
@@ -188,7 +192,7 @@ public class FrostedSidebar: UIViewController {
             self.removeFromParentViewControllerCallingAppearanceMethods(true)
             self.delegate?.sidebar(self, didDismissFromScreenAnimated: true)
             self.layoutItems()
-            if completion{
+            if completion != nil{
                 completion!(finished)
             }
         }
@@ -221,6 +225,11 @@ public class FrostedSidebar: UIViewController {
         }
         }
         
+        required init(coder aDecoder: NSCoder!) {
+            self.itemIndex = 0
+            super.init(coder: aDecoder)
+        }
+        
         init(index: Int){
             imageView.backgroundColor = UIColor.clearColor()
             imageView.contentMode = UIViewContentMode.ScaleAspectFit
@@ -242,9 +251,9 @@ public class FrostedSidebar: UIViewController {
             var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
             let darkenFactor: CGFloat = 0.3
             var darkerColor: UIColor
-            if originalBackgroundColor?.getRed(&r, green: &g, blue: &b, alpha: &a){
+            if originalBackgroundColor != nil && originalBackgroundColor!.getRed(&r, green: &g, blue: &b, alpha: &a){
                 darkerColor = UIColor(red: max(r - darkenFactor, 0), green: max(g - darkenFactor, 0), blue: max(b - darkenFactor, 0), alpha: a)
-            } else if originalBackgroundColor?.getWhite(&r, alpha: &a){
+            } else if originalBackgroundColor != nil && originalBackgroundColor!.getWhite(&r, alpha: &a){
                 darkerColor = UIColor(white: max(r - darkenFactor, 0), alpha: a)
             } else{
                 darkerColor = UIColor.clearColor()
@@ -287,7 +296,7 @@ public class FrostedSidebar: UIViewController {
             dismissAnimated(true, completion: nil)
         } else{
             let tapIndex = indexOfTap(recognizer.locationInView(contentView))
-            if tapIndex{
+            if tapIndex != nil{
                 didTapItemAtIndex(tapIndex!)
             }
         }
@@ -295,7 +304,7 @@ public class FrostedSidebar: UIViewController {
     
     private func didTapItemAtIndex(index: Int){
         let didEnable = !selectedIndices.containsIndex(index)
-        if borderColors{
+        if borderColors != nil{
             let stroke = borderColors![index]
             let item = itemViews[index]
             if didEnable{
@@ -371,7 +380,7 @@ public class FrostedSidebar: UIViewController {
 			item.layer.borderColor = UIColor.clearColor().CGColor
 			item.alpha = 0
 			if selectedIndices.containsIndex(index){
-				if borderColors{
+				if borderColors != nil{
 					item.layer.borderColor = borderColors![index].CGColor
 				}
 			}
@@ -392,7 +401,7 @@ public class FrostedSidebar: UIViewController {
     }
     
     private func addToParentViewController(viewController: UIViewController, callingAppearanceMethods: Bool){
-        if parentViewController{
+        if (parentViewController != nil){
             removeFromParentViewControllerCallingAppearanceMethods(callingAppearanceMethods)
         }
         if callingAppearanceMethods{
