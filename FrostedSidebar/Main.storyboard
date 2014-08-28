@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6185.11" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="yFd-Pw-cF0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6206.8" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="00u-vZ-mxX">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6190.4"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7026.1"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Item-->
         <scene sceneID="qSd-5i-x6d">
             <objects>
                 <viewController id="yFd-Pw-cF0" customClass="ViewController" customModule="FrostedSidebar" customModuleProvider="target" sceneMemberID="viewController">
@@ -27,17 +27,174 @@
                                     <action selector="onBurger" destination="yFd-Pw-cF0" eventType="touchUpInside" id="5Az-vg-sfe"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View Controller 1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I6o-9F-JKU">
+                                <rect key="frame" x="235" y="289" width="131" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="aXT-I8-4Vl" secondAttribute="bottom" id="2Y8-C2-k4e"/>
+                            <constraint firstAttribute="centerX" secondItem="I6o-9F-JKU" secondAttribute="centerX" id="F0s-cM-xdS"/>
                             <constraint firstItem="aXT-I8-4Vl" firstAttribute="leading" secondItem="X4b-dZ-l1O" secondAttribute="leading" id="Pai-eO-zfB"/>
                             <constraint firstItem="aXT-I8-4Vl" firstAttribute="top" secondItem="X4b-dZ-l1O" secondAttribute="top" id="aG0-wg-dfN"/>
                             <constraint firstAttribute="trailing" secondItem="aXT-I8-4Vl" secondAttribute="trailing" id="mA0-o5-49Q"/>
+                            <constraint firstAttribute="centerY" secondItem="I6o-9F-JKU" secondAttribute="centerY" id="nfM-nB-vfF"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="9eZ-lD-MBt"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dvg-aq-5CD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1334" y="-502"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="lWc-99-BKQ">
+            <objects>
+                <viewController id="wsn-Gr-6uq" customClass="ViewController" customModule="FrostedSidebar" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="au1-Kd-8M0"/>
+                        <viewControllerLayoutGuide type="bottom" id="ih7-Ly-jhN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DIn-Ba-Sh9">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" image="Background.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="isk-Lh-N8p">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wsa-Mc-D9E">
+                                <rect key="frame" x="16" y="20" width="19" height="22"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" image="burger"/>
+                                <connections>
+                                    <action selector="onBurger" destination="wsn-Gr-6uq" eventType="touchUpInside" id="R1W-pZ-00J"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View Controller 2" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IjJ-cb-LfY">
+                                <rect key="frame" x="235" y="289" width="131" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="IjJ-cb-LfY" secondAttribute="centerY" id="MNg-tq-Tfu"/>
+                            <constraint firstAttribute="centerX" secondItem="IjJ-cb-LfY" secondAttribute="centerX" id="feb-QU-6NV"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="QNd-BW-RNS"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4MC-Dr-mNV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1334" y="171"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="ZlK-Wb-2aS">
+            <objects>
+                <viewController id="VA2-Zc-qCQ" customClass="ViewController" customModule="FrostedSidebar" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="LDU-Sj-WQx"/>
+                        <viewControllerLayoutGuide type="bottom" id="RWE-EN-EgE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XSo-Uo-cvr">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" image="Background.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Kgs-SL-9NA">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rOG-uS-t5o">
+                                <rect key="frame" x="16" y="20" width="19" height="22"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" image="burger"/>
+                                <connections>
+                                    <action selector="onBurger" destination="VA2-Zc-qCQ" eventType="touchUpInside" id="zth-Uy-7ja"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View Controller 3" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ygk-EM-vOX">
+                                <rect key="frame" x="235" y="289" width="131" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="ygk-EM-vOX" secondAttribute="centerX" id="DDR-cZ-UdU"/>
+                            <constraint firstAttribute="centerY" secondItem="ygk-EM-vOX" secondAttribute="centerY" id="DTV-Qb-3W6"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="prw-r2-Qt3"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A23-rU-YIa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1334" y="831"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="7fk-0J-N8K">
+            <objects>
+                <viewController id="j5D-bS-emu" customClass="ViewController" customModule="FrostedSidebar" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZHE-c1-eli"/>
+                        <viewControllerLayoutGuide type="bottom" id="STV-0o-JBn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FC5-nb-nic">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" image="Background.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="GtQ-md-x7x">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="is7-xQ-eXG">
+                                <rect key="frame" x="16" y="20" width="19" height="22"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" image="burger"/>
+                                <connections>
+                                    <action selector="onBurger" destination="j5D-bS-emu" eventType="touchUpInside" id="0Sg-vK-b4g"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View Controller 4" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OxO-O2-uqr">
+                                <rect key="frame" x="235" y="289" width="131" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="OxO-O2-uqr" secondAttribute="centerX" id="6I3-8m-zwG"/>
+                            <constraint firstAttribute="centerY" secondItem="OxO-O2-uqr" secondAttribute="centerY" id="hhz-ZS-Ni6"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="YUj-YM-ftx"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V5e-e7-PEY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1336" y="1498"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="6Ie-Xz-3lW">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="00u-vZ-mxX" customClass="TabBarController" customModule="FrostedSidebar" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="6jS-hB-otR">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="yFd-Pw-cF0" kind="relationship" relationship="viewControllers" id="eca-4k-YIE"/>
+                        <segue destination="wsn-Gr-6uq" kind="relationship" relationship="viewControllers" id="LdG-Bb-BD6"/>
+                        <segue destination="VA2-Zc-qCQ" kind="relationship" relationship="viewControllers" id="J7P-wG-Q9u"/>
+                        <segue destination="j5D-bS-emu" kind="relationship" relationship="viewControllers" id="Z6R-od-pNi"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JHs-JP-c1R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="400" y="380"/>
         </scene>

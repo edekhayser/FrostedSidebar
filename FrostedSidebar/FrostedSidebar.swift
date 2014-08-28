@@ -61,7 +61,7 @@ public class FrostedSidebar: UIViewController {
     
     //MARK: Public Methods
     
-    required public init(coder aDecoder: NSCoder!) {
+    required public init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
@@ -225,7 +225,7 @@ public class FrostedSidebar: UIViewController {
         }
         }
         
-        required init(coder aDecoder: NSCoder!) {
+        required init(coder aDecoder: NSCoder) {
             self.itemIndex = 0
             super.init(coder: aDecoder)
         }
