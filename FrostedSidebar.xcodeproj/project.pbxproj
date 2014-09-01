@@ -13,6 +13,7 @@
 		2008D6A61970231B00B89D6C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2008D6A51970231B00B89D6C /* Images.xcassets */; };
 		2066AEA3196DC14A001EE855 /* FrostedSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2066AEA2196DC14A001EE855 /* FrostedSidebar.swift */; };
 		208E5E07196DBE6F005653B3 /* FrostedSidebarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208E5E06196DBE6F005653B3 /* FrostedSidebarTests.swift */; };
+		20A1FAD919B4B1CE00208E92 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A1FAD819B4B1CE00208E92 /* TabBarController.swift */; };
 		20B553BE19701F1F006165BF /* Background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 20B553AF19701F1F006165BF /* Background.jpg */; };
 		20B553BF19701F1F006165BF /* burger.png in Resources */ = {isa = PBXBuildFile; fileRef = 20B553B019701F1F006165BF /* burger.png */; };
 		20B553C019701F1F006165BF /* burger@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20B553B119701F1F006165BF /* burger@2x.png */; };
@@ -25,7 +26,6 @@
 		20B553CA19701F1F006165BF /* profile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20B553BB19701F1F006165BF /* profile@2x.png */; };
 		20B553CB19701F1F006165BF /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 20B553BC19701F1F006165BF /* star.png */; };
 		20B553CC19701F1F006165BF /* star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20B553BD19701F1F006165BF /* star@2x.png */; };
-		20F3DE9E19AF9A8200F48CD1 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F3DE9D19AF9A8200F48CD1 /* TabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +49,7 @@
 		208E5E00196DBE6F005653B3 /* FrostedSidebarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FrostedSidebarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		208E5E05196DBE6F005653B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		208E5E06196DBE6F005653B3 /* FrostedSidebarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrostedSidebarTests.swift; sourceTree = "<group>"; };
+		20A1FAD819B4B1CE00208E92 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabBarController.swift; path = FrostedSidebar/TabBarController.swift; sourceTree = SOURCE_ROOT; };
 		20B553AF19701F1F006165BF /* Background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Background.jpg; path = FrostedSidebar/Background.jpg; sourceTree = SOURCE_ROOT; };
 		20B553B019701F1F006165BF /* burger.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = burger.png; path = FrostedSidebar/burger.png; sourceTree = SOURCE_ROOT; };
 		20B553B119701F1F006165BF /* burger@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "burger@2x.png"; path = "FrostedSidebar/burger@2x.png"; sourceTree = SOURCE_ROOT; };
@@ -61,7 +62,6 @@
 		20B553BB19701F1F006165BF /* profile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "profile@2x.png"; path = "FrostedSidebar/profile@2x.png"; sourceTree = SOURCE_ROOT; };
 		20B553BC19701F1F006165BF /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = star.png; path = FrostedSidebar/star.png; sourceTree = SOURCE_ROOT; };
 		20B553BD19701F1F006165BF /* star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "star@2x.png"; path = "FrostedSidebar/star@2x.png"; sourceTree = SOURCE_ROOT; };
-		20F3DE9D19AF9A8200F48CD1 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,9 +104,9 @@
 		208E5DF0196DBE6F005653B3 /* FrostedSidebar */ = {
 			isa = PBXGroup;
 			children = (
+				20A1FAD819B4B1CE00208E92 /* TabBarController.swift */,
 				2008D69B197021D300B89D6C /* AppDelegate.swift */,
 				2008D69C197021D300B89D6C /* ViewController.swift */,
-				20F3DE9D19AF9A8200F48CD1 /* TabBarController.swift */,
 				2008D69F1970223100B89D6C /* Main.storyboard */,
 				2008D6A51970231B00B89D6C /* Images.xcassets */,
 				208E5DF1196DBE6F005653B3 /* Supporting Files */,
@@ -266,7 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2008D69E197021D300B89D6C /* ViewController.swift in Sources */,
-				20F3DE9E19AF9A8200F48CD1 /* TabBarController.swift in Sources */,
+				20A1FAD919B4B1CE00208E92 /* TabBarController.swift in Sources */,
 				2008D69D197021D300B89D6C /* AppDelegate.swift in Sources */,
 				2066AEA3196DC14A001EE855 /* FrostedSidebar.swift in Sources */,
 			);
