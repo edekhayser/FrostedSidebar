@@ -245,7 +245,7 @@ public class FrostedSidebar: UIViewController {
             imageView.center = CGPoint(x: inset, y: inset)
         }
         
-        override func touchesBegan(touches: NSSet!, withEvent event: UIEvent!) {
+        override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
             super.touchesBegan(touches, withEvent: event)
             
             var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
@@ -262,7 +262,7 @@ public class FrostedSidebar: UIViewController {
             backgroundColor = darkerColor
         }
         
-        override func touchesEnded(touches: NSSet!, withEvent event: UIEvent!) {
+        override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
             super.touchesEnded(touches, withEvent: event)
             backgroundColor = originalBackgroundColor
         }
@@ -363,8 +363,8 @@ public class FrostedSidebar: UIViewController {
     }
     
     private func layoutSubviews(){
-        let x = showFromRight ? parentViewController.view.bounds.size.width - width : 0
-        contentView.frame = CGRect(x: x, y: 0, width: width, height: parentViewController.view.bounds.size.height)
+        let x = showFromRight ? parentViewController!.view.bounds.size.width - width : 0
+        contentView.frame = CGRect(x: x, y: 0, width: width, height: parentViewController!.view.bounds.size.height)
         blurView.frame = contentView.frame
         layoutItems()
     }
