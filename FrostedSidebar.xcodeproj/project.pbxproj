@@ -12,7 +12,6 @@
 		2008D6A01970223100B89D6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2008D69F1970223100B89D6C /* Main.storyboard */; };
 		2008D6A61970231B00B89D6C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2008D6A51970231B00B89D6C /* Images.xcassets */; };
 		2066AEA3196DC14A001EE855 /* FrostedSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2066AEA2196DC14A001EE855 /* FrostedSidebar.swift */; };
-		208E5E07196DBE6F005653B3 /* FrostedSidebarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208E5E06196DBE6F005653B3 /* FrostedSidebarTests.swift */; };
 		20A1FAD919B4B1CE00208E92 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A1FAD819B4B1CE00208E92 /* TabBarController.swift */; };
 		20B553BE19701F1F006165BF /* Background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 20B553AF19701F1F006165BF /* Background.jpg */; };
 		20B553BF19701F1F006165BF /* burger.png in Resources */ = {isa = PBXBuildFile; fileRef = 20B553B019701F1F006165BF /* burger.png */; };
@@ -26,6 +25,7 @@
 		20B553CA19701F1F006165BF /* profile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20B553BB19701F1F006165BF /* profile@2x.png */; };
 		20B553CB19701F1F006165BF /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 20B553BC19701F1F006165BF /* star.png */; };
 		20B553CC19701F1F006165BF /* star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20B553BD19701F1F006165BF /* star@2x.png */; };
+		B88B090919C1E0B800EF587D /* FrostedSidebarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88B090819C1E0B800EF587D /* FrostedSidebarTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,8 +47,6 @@
 		208E5DEE196DBE6F005653B3 /* FrostedSidebar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FrostedSidebar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		208E5DF2196DBE6F005653B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = FrostedSidebar/Info.plist; sourceTree = "<group>"; };
 		208E5E00196DBE6F005653B3 /* FrostedSidebarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FrostedSidebarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		208E5E05196DBE6F005653B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		208E5E06196DBE6F005653B3 /* FrostedSidebarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrostedSidebarTests.swift; sourceTree = "<group>"; };
 		20A1FAD819B4B1CE00208E92 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabBarController.swift; path = FrostedSidebar/TabBarController.swift; sourceTree = SOURCE_ROOT; };
 		20B553AF19701F1F006165BF /* Background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Background.jpg; path = FrostedSidebar/Background.jpg; sourceTree = SOURCE_ROOT; };
 		20B553B019701F1F006165BF /* burger.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = burger.png; path = FrostedSidebar/burger.png; sourceTree = SOURCE_ROOT; };
@@ -62,6 +60,8 @@
 		20B553BB19701F1F006165BF /* profile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "profile@2x.png"; path = "FrostedSidebar/profile@2x.png"; sourceTree = SOURCE_ROOT; };
 		20B553BC19701F1F006165BF /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = star.png; path = FrostedSidebar/star.png; sourceTree = SOURCE_ROOT; };
 		20B553BD19701F1F006165BF /* star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "star@2x.png"; path = "FrostedSidebar/star@2x.png"; sourceTree = SOURCE_ROOT; };
+		B88B090819C1E0B800EF587D /* FrostedSidebarTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FrostedSidebarTests.swift; path = FrostedSidebarTests/FrostedSidebarTests.swift; sourceTree = SOURCE_ROOT; };
+		B88B090A19C1E0C700EF587D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = FrostedSidebarTests/Info.plist; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,7 +138,7 @@
 		208E5E03196DBE6F005653B3 /* FrostedSidebarTests */ = {
 			isa = PBXGroup;
 			children = (
-				208E5E06196DBE6F005653B3 /* FrostedSidebarTests.swift */,
+				B88B090819C1E0B800EF587D /* FrostedSidebarTests.swift */,
 				208E5E04196DBE6F005653B3 /* Supporting Files */,
 			);
 			name = FrostedSidebarTests;
@@ -148,7 +148,7 @@
 		208E5E04196DBE6F005653B3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				208E5E05196DBE6F005653B3 /* Info.plist */,
+				B88B090A19C1E0C700EF587D /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -276,7 +276,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				208E5E07196DBE6F005653B3 /* FrostedSidebarTests.swift in Sources */,
+				B88B090919C1E0B800EF587D /* FrostedSidebarTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,7 +401,8 @@
 		208E5E0E196DBE6F005653B3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CustomStuff.app/CustomStuff";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/FrostedSidebar.app/FrostedSidebar";
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -410,9 +411,10 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = CustomStuffTests/Info.plist;
+				INFOPLIST_FILE = FrostedSidebarTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = FrostedSidebarTests;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
 			name = Debug;
@@ -420,12 +422,13 @@
 		208E5E0F196DBE6F005653B3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CustomStuff.app/CustomStuff";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/FrostedSidebar.app/FrostedSidebar";
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = CustomStuffTests/Info.plist;
+				INFOPLIST_FILE = FrostedSidebarTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = FrostedSidebarTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
