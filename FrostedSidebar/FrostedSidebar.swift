@@ -115,7 +115,7 @@ public class FrostedSidebar: UIViewController {
     }
     
     public override func supportedInterfaceOrientations() -> Int {
-        return Int(UIInterfaceOrientationMask.All.toRaw())
+        return Int(UIInterfaceOrientationMask.All.rawValue)
     }
     
     public override func willAnimateRotationToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
@@ -172,7 +172,7 @@ public class FrostedSidebar: UIViewController {
         }
         
         if animated{
-            UIView.animateWithDuration(NSTimeInterval(animationDuration), delay: 0, options: UIViewAnimationOptions.fromRaw(UInt(kNilOptions))!, animations: animations, completion: completion)
+            UIView.animateWithDuration(NSTimeInterval(animationDuration), delay: 0, options: UIViewAnimationOptions.convertFromNilLiteral(), animations: animations, completion: completion)
         } else{
             animations()
             completion(true)
