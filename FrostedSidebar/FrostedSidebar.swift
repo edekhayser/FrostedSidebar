@@ -172,7 +172,7 @@ public class FrostedSidebar: UIViewController {
         }
         
         if animated{
-            UIView.animateWithDuration(NSTimeInterval(animationDuration), delay: 0, options: UIViewAnimationOptions.convertFromNilLiteral(), animations: animations, completion: completion)
+            UIView.animateWithDuration(NSTimeInterval(animationDuration), delay: 0, options: UIViewAnimationOptions.allZeros, animations: animations, completion: completion)
         } else{
             animations()
             completion(true)
