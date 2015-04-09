@@ -15,7 +15,7 @@ class ViewController: UIViewController {
 	}
 	
 	@IBAction func onBurger() {
-        (tabBarController as TabBarController).sidebar.showInViewController(self, animated: true)
+        (tabBarController as! TabBarController).sidebar.showInViewController(self, animated: true)
     }
 }
 

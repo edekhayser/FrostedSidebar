@@ -48,7 +48,7 @@ public class FrostedSidebar: UIViewController {
             }
         }
     }
- 
+    
     //MARK: Private Properties
     
     private var contentView:            UIScrollView                = UIScrollView()
@@ -118,9 +118,8 @@ public class FrostedSidebar: UIViewController {
         return Int(UIInterfaceOrientationMask.All.rawValue)
     }
     
-    public override func willAnimateRotationToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
-        super.willAnimateRotationToInterfaceOrientation(toInterfaceOrientation, duration: duration)
-        
+    public override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
         if isViewLoaded(){
             dismissAnimated(false, completion: nil)
         }
@@ -220,9 +219,9 @@ public class FrostedSidebar: UIViewController {
         var imageView:              UIImageView                 = UIImageView()
         var itemIndex:              Int
         var originalBackgroundColor:UIColor? {
-        didSet{
-            self.backgroundColor = originalBackgroundColor
-        }
+            didSet{
+                self.backgroundColor = originalBackgroundColor
+            }
         }
         
         required init(coder aDecoder: NSCoder) {
@@ -245,7 +244,7 @@ public class FrostedSidebar: UIViewController {
             imageView.center = CGPoint(x: inset, y: inset)
         }
         
-        override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
             super.touchesBegan(touches, withEvent: event)
             
             var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
@@ -262,12 +261,12 @@ public class FrostedSidebar: UIViewController {
             backgroundColor = darkerColor
         }
         
-        override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
+        override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
             super.touchesEnded(touches, withEvent: event)
             backgroundColor = originalBackgroundColor
         }
         
-        override func touchesCancelled(touches: NSSet!, withEvent event: UIEvent!) {
+        override func touchesCancelled(touches: Set<NSObject>, withEvent event: UIEvent!) {
             super.touchesCancelled(touches, withEvent: event)
             backgroundColor = originalBackgroundColor
         }
@@ -322,7 +321,7 @@ public class FrostedSidebar: UIViewController {
                 borderAnimation.duration = 0.5
                 item.layer.addAnimation(borderAnimation, forKey: nil)
                 selectedIndices.addIndex(index)
-				
+                
             } else{
                 if !isSingleSelect{
                     if !calloutsAlwaysSelected{
@@ -377,13 +376,13 @@ public class FrostedSidebar: UIViewController {
             let frame = CGRect(x: leftPadding, y: topPadding*idx + itemSize.height*idx + topPadding, width:itemSize.width, height: itemSize.height)
             item.frame = frame
             item.layer.cornerRadius = frame.size.width / 2
-			item.layer.borderColor = UIColor.clearColor().CGColor
-			item.alpha = 0
-			if selectedIndices.containsIndex(index){
-				if borderColors != nil{
-					item.layer.borderColor = borderColors![index].CGColor
-				}
-			}
+            item.layer.borderColor = UIColor.clearColor().CGColor
+            item.alpha = 0
+            if selectedIndices.containsIndex(index){
+                if borderColors != nil{
+                    item.layer.borderColor = borderColors![index].CGColor
+                }
+            }
         }
         let itemCount = CGFloat(itemViews.count)
         contentView.contentSize = CGSizeMake(0, itemCount * (itemSize.height + topPadding) + topPadding)
@@ -416,8 +415,8 @@ public class FrostedSidebar: UIViewController {
     }
     
     private func removeFromParentViewControllerCallingAppearanceMethods(callAppearanceMethods: Bool){
-	
-		if callAppearanceMethods{
+        
+        if callAppearanceMethods{
             beginAppearanceTransition(false, animated: false)
         }
         willMoveToParentViewController(nil)
