@@ -213,6 +213,66 @@ public class FrostedSidebar: UIViewController {
         }
     }
     
+    public func selectItemAtIndex(index: Int){
+        let didEnable = !selectedIndices.containsIndex(index)
+        if borderColors != nil{
+            let stroke = borderColors![index]
+            let item = itemViews[index]
+            if didEnable{
+                if isSingleSelect{
+                    selectedIndices.removeAllIndexes()
+                    for (index, item) in enumerate(itemViews){
+                        item.layer.borderColor = UIColor.clearColor().CGColor
+                    }
+                }
+                item.layer.borderColor = stroke.CGColor
+                
+                var borderAnimation = CABasicAnimation(keyPath: "borderColor")
+                borderAnimation.fromValue = UIColor.clearColor().CGColor
+                borderAnimation.toValue = stroke.CGColor
+                borderAnimation.duration = 0.5
+                item.layer.addAnimation(borderAnimation, forKey: nil)
+                selectedIndices.addIndex(index)
+                
+            } else{
+                if !isSingleSelect{
+                    if !calloutsAlwaysSelected{
+                        item.layer.borderColor = UIColor.clearColor().CGColor
+                        selectedIndices.removeIndex(index)
+                    }
+                }
+            }
+            let pathFrame = CGRect(x: -CGRectGetMidX(item.bounds), y: -CGRectGetMidY(item.bounds), width: item.bounds.size.width, height: item.bounds.size.height)
+            let path = UIBezierPath(roundedRect: pathFrame, cornerRadius: item.layer.cornerRadius)
+            let shapePosition = view.convertPoint(item.center, fromView: contentView)
+            let circleShape = CAShapeLayer()
+            circleShape.path = path.CGPath
+            circleShape.position = shapePosition
+            circleShape.fillColor = UIColor.clearColor().CGColor
+            circleShape.opacity = 0
+            circleShape.strokeColor = stroke.CGColor
+            circleShape.lineWidth = borderWidth
+            view.layer.addSublayer(circleShape)
+            
+            let scaleAnimation = CABasicAnimation(keyPath: "transform.scale")
+            scaleAnimation.fromValue = NSValue(CATransform3D: CATransform3DIdentity)
+            scaleAnimation.toValue = NSValue(CATransform3D: CATransform3DMakeScale(2.5, 2.5, 1))
+            let alphaAnimation = CABasicAnimation(keyPath: "opacity")
+            alphaAnimation.fromValue = 1
+            alphaAnimation.toValue = 0
+            let animation = CAAnimationGroup()
+            animation.animations = [scaleAnimation, alphaAnimation]
+            animation.duration = 0.5
+            animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+            circleShape.addAnimation(animation, forKey: nil)
+        }
+        if let action = actionForIndex[index]{
+            action()
+        }
+        delegate?.sidebar(self, didTapItemAtIndex: index)
+        delegate?.sidebar(self, didEnable: didEnable, itemAtIndex: index)
+    }
+    
     //MARK: Private Classes
     
     private class CalloutItem: UIView{
@@ -296,69 +356,9 @@ public class FrostedSidebar: UIViewController {
         } else{
             let tapIndex = indexOfTap(recognizer.locationInView(contentView))
             if tapIndex != nil{
-                didTapItemAtIndex(tapIndex!)
+                selectItemAtIndex(tapIndex!)
             }
         }
-    }
-    
-    private func didTapItemAtIndex(index: Int){
-        let didEnable = !selectedIndices.containsIndex(index)
-        if borderColors != nil{
-            let stroke = borderColors![index]
-            let item = itemViews[index]
-            if didEnable{
-                if isSingleSelect{
-                    selectedIndices.removeAllIndexes()
-                    for (index, item) in enumerate(itemViews){
-                        item.layer.borderColor = UIColor.clearColor().CGColor
-                    }
-                }
-                item.layer.borderColor = stroke.CGColor
-                
-                var borderAnimation = CABasicAnimation(keyPath: "borderColor")
-                borderAnimation.fromValue = UIColor.clearColor().CGColor
-                borderAnimation.toValue = stroke.CGColor
-                borderAnimation.duration = 0.5
-                item.layer.addAnimation(borderAnimation, forKey: nil)
-                selectedIndices.addIndex(index)
-                
-            } else{
-                if !isSingleSelect{
-                    if !calloutsAlwaysSelected{
-                        item.layer.borderColor = UIColor.clearColor().CGColor
-                        selectedIndices.removeIndex(index)
-                    }
-                }
-            }
-            let pathFrame = CGRect(x: -CGRectGetMidX(item.bounds), y: -CGRectGetMidY(item.bounds), width: item.bounds.size.width, height: item.bounds.size.height)
-            let path = UIBezierPath(roundedRect: pathFrame, cornerRadius: item.layer.cornerRadius)
-            let shapePosition = view.convertPoint(item.center, fromView: contentView)
-            let circleShape = CAShapeLayer()
-            circleShape.path = path.CGPath
-            circleShape.position = shapePosition
-            circleShape.fillColor = UIColor.clearColor().CGColor
-            circleShape.opacity = 0
-            circleShape.strokeColor = stroke.CGColor
-            circleShape.lineWidth = borderWidth
-            view.layer.addSublayer(circleShape)
-            
-            let scaleAnimation = CABasicAnimation(keyPath: "transform.scale")
-            scaleAnimation.fromValue = NSValue(CATransform3D: CATransform3DIdentity)
-            scaleAnimation.toValue = NSValue(CATransform3D: CATransform3DMakeScale(2.5, 2.5, 1))
-            let alphaAnimation = CABasicAnimation(keyPath: "opacity")
-            alphaAnimation.fromValue = 1
-            alphaAnimation.toValue = 0
-            let animation = CAAnimationGroup()
-            animation.animations = [scaleAnimation, alphaAnimation]
-            animation.duration = 0.5
-            animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
-            circleShape.addAnimation(animation, forKey: nil)
-        }
-        if let action = actionForIndex[index]{
-            action()
-        }
-        delegate?.sidebar(self, didTapItemAtIndex: index)
-        delegate?.sidebar(self, didEnable: didEnable, itemAtIndex: index)
     }
     
     private func layoutSubviews(){
