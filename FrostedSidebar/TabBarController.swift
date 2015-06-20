@@ -36,7 +36,6 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
 				UIColor(red: 126/255, green: 242/255, blue: 195/255, alpha: 1),
 				UIColor(red: 119/255, green: 152/255, blue: 255/255, alpha: 1)],
 			selectedItemIndices: NSIndexSet(index: 0))
-		
 		sidebar.isSingleSelect = true
 		sidebar.actionForIndex = [
 			0: {self.sidebar.dismissAnimated(true, completion: { finished in self.selectedIndex = 0}) },

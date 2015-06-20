@@ -32,8 +32,9 @@ public class FrostedSidebar: UIViewController {
     public var itemBackgroundColor:     UIColor                     = UIColor(white: 1, alpha: 0.25)
     public var borderWidth:             CGFloat                     = 2
     public var delegate:                FrostedSidebarDelegate?     = nil
-    public var actionForIndex:         [Int : ()->()]              = [:]
-    public var selectedIndices:        NSMutableIndexSet           = NSMutableIndexSet()
+    public var actionForIndex:          [Int : ()->()]              = [:]
+    public var selectedIndices:         NSMutableIndexSet           = NSMutableIndexSet()
+    public var adjustForNavigationBar:  Bool                        = false
     //Only one of these properties can be used at a time. If one is true, the other automatically is false
     public var isSingleSelect:          Bool                        = false{
         didSet{
@@ -97,7 +98,6 @@ public class FrostedSidebar: UIViewController {
         }
         
         super.init(nibName: nil, bundle: nil)
-        
     }
     
     public override func loadView() {
@@ -126,6 +126,7 @@ public class FrostedSidebar: UIViewController {
     }
     
     public func showInViewController(viewController: UIViewController, animated: Bool){
+        layoutItems()
         if let bar = sharedSidebar{
             bar.dismissAnimated(false, completion: nil)
         }
@@ -372,7 +373,8 @@ public class FrostedSidebar: UIViewController {
         let leftPadding: CGFloat = (width - itemSize.width) / 2
         let topPadding: CGFloat = leftPadding
         for (index, item) in enumerate(itemViews){
-            let idx: CGFloat = CGFloat(index)
+            let idx: CGFloat = adjustForNavigationBar ? CGFloat(index) + 0.5 : CGFloat(index)
+            
             let frame = CGRect(x: leftPadding, y: topPadding*idx + itemSize.height*idx + topPadding, width:itemSize.width, height: itemSize.height)
             item.frame = frame
             item.layer.cornerRadius = frame.size.width / 2
@@ -385,7 +387,11 @@ public class FrostedSidebar: UIViewController {
             }
         }
         let itemCount = CGFloat(itemViews.count)
-        contentView.contentSize = CGSizeMake(0, itemCount * (itemSize.height + topPadding) + topPadding)
+        if adjustForNavigationBar{
+            contentView.contentSize = CGSizeMake(0, (itemCount + 0.5) * (itemSize.height + topPadding) + topPadding)
+        } else {
+            contentView.contentSize = CGSizeMake(0, itemCount * (itemSize.height + topPadding) + topPadding)
+        }
     }
     
     private func indexOfTap(location: CGPoint) -> Int? {
