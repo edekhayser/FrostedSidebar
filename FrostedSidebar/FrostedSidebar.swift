@@ -62,7 +62,7 @@ public class FrostedSidebar: UIViewController {
     
     //MARK: Public Methods
     
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
@@ -81,7 +81,7 @@ public class FrostedSidebar: UIViewController {
         borderColors = colors
         images = itemImages
         
-        for (index, image) in enumerate(images){
+        for (index, image) in images.enumerate(){
             let view = CalloutItem(index: index)
             view.clipsToBounds = true
             view.imageView.image = image
@@ -114,8 +114,8 @@ public class FrostedSidebar: UIViewController {
         return true
     }
     
-    public override func supportedInterfaceOrientations() -> Int {
-        return Int(UIInterfaceOrientationMask.All.rawValue)
+    public override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.All
     }
     
     public override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
@@ -172,13 +172,13 @@ public class FrostedSidebar: UIViewController {
         }
         
         if animated{
-            UIView.animateWithDuration(NSTimeInterval(animationDuration), delay: 0, options: UIViewAnimationOptions.allZeros, animations: animations, completion: completion)
+            UIView.animateWithDuration(NSTimeInterval(animationDuration), delay: 0, options: UIViewAnimationOptions(), animations: animations, completion: completion)
         } else{
             animations()
             completion(true)
         }
         
-        for (index, item) in enumerate(itemViews){
+        for (index, item) in itemViews.enumerate(){
             item.layer.transform = CATransform3DMakeScale(0.3, 0.3, 1)
             item.alpha = 0
             item.originalBackgroundColor = itemBackgroundColor
@@ -222,13 +222,13 @@ public class FrostedSidebar: UIViewController {
             if didEnable{
                 if isSingleSelect{
                     selectedIndices.removeAllIndexes()
-                    for (index, item) in enumerate(itemViews){
+                    for item in itemViews{
                         item.layer.borderColor = UIColor.clearColor().CGColor
                     }
                 }
                 item.layer.borderColor = stroke.CGColor
                 
-                var borderAnimation = CABasicAnimation(keyPath: "borderColor")
+                let borderAnimation = CABasicAnimation(keyPath: "borderColor")
                 borderAnimation.fromValue = UIColor.clearColor().CGColor
                 borderAnimation.toValue = stroke.CGColor
                 borderAnimation.duration = 0.5
@@ -285,7 +285,7 @@ public class FrostedSidebar: UIViewController {
             }
         }
         
-        required init(coder aDecoder: NSCoder) {
+        required init?(coder aDecoder: NSCoder) {
             self.itemIndex = 0
             super.init(coder: aDecoder)
         }
@@ -305,7 +305,7 @@ public class FrostedSidebar: UIViewController {
             imageView.center = CGPoint(x: inset, y: inset)
         }
         
-        override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
             super.touchesBegan(touches, withEvent: event)
             
             var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
@@ -322,12 +322,12 @@ public class FrostedSidebar: UIViewController {
             backgroundColor = darkerColor
         }
         
-        override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
+        override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
             super.touchesEnded(touches, withEvent: event)
             backgroundColor = originalBackgroundColor
         }
         
-        override func touchesCancelled(touches: Set<NSObject>, withEvent event: UIEvent!) {
+        override func touchesCancelled(touches: Set<UITouch>?, withEvent event: UIEvent?) {
             super.touchesCancelled(touches, withEvent: event)
             backgroundColor = originalBackgroundColor
         }
@@ -372,7 +372,7 @@ public class FrostedSidebar: UIViewController {
     private func layoutItems(){
         let leftPadding: CGFloat = (width - itemSize.width) / 2
         let topPadding: CGFloat = leftPadding
-        for (index, item) in enumerate(itemViews){
+        for (index, item) in itemViews.enumerate(){
             let idx: CGFloat = adjustForNavigationBar ? CGFloat(index) + 0.5 : CGFloat(index)
             
             let frame = CGRect(x: leftPadding, y: topPadding*idx + itemSize.height*idx + topPadding, width:itemSize.width, height: itemSize.height)
@@ -396,7 +396,7 @@ public class FrostedSidebar: UIViewController {
     
     private func indexOfTap(location: CGPoint) -> Int? {
         var index: Int?
-        for (idx, item) in enumerate(itemViews){
+        for (idx, item) in itemViews.enumerate(){
             if CGRectContainsPoint(item.frame, location){
                 index = idx
                 break

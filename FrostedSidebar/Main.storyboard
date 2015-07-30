@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="00u-vZ-mxX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8164.2" systemVersion="15A235d" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="00u-vZ-mxX">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8135.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Item-->
@@ -18,9 +20,11 @@
                         <subviews>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Background.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="aXT-I8-4Vl">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <animations/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sgi-LI-Rzr">
-                                <rect key="frame" x="20" y="20" width="19" height="22"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sgi-LI-Rzr">
+                                <rect key="frame" x="20" y="20" width="19" height="18"/>
+                                <animations/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" image="burger"/>
                                 <connections>
@@ -28,20 +32,24 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View Controller 1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I6o-9F-JKU">
-                                <rect key="frame" x="235" y="289" width="131" height="21"/>
+                                <rect key="frame" x="236" y="289" width="129" height="21"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="aXT-I8-4Vl" secondAttribute="bottom" id="2Y8-C2-k4e"/>
                             <constraint firstAttribute="centerX" secondItem="I6o-9F-JKU" secondAttribute="centerX" id="F0s-cM-xdS"/>
+                            <constraint firstItem="Sgi-LI-Rzr" firstAttribute="leading" secondItem="X4b-dZ-l1O" secondAttribute="leading" constant="20" id="IgQ-Tf-bIr"/>
                             <constraint firstItem="aXT-I8-4Vl" firstAttribute="leading" secondItem="X4b-dZ-l1O" secondAttribute="leading" id="Pai-eO-zfB"/>
                             <constraint firstItem="aXT-I8-4Vl" firstAttribute="top" secondItem="X4b-dZ-l1O" secondAttribute="top" id="aG0-wg-dfN"/>
                             <constraint firstAttribute="trailing" secondItem="aXT-I8-4Vl" secondAttribute="trailing" id="mA0-o5-49Q"/>
                             <constraint firstAttribute="centerY" secondItem="I6o-9F-JKU" secondAttribute="centerY" id="nfM-nB-vfF"/>
+                            <constraint firstItem="Sgi-LI-Rzr" firstAttribute="top" secondItem="X4b-dZ-l1O" secondAttribute="top" constant="20" id="zVh-p0-qNa"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="9eZ-lD-MBt"/>
@@ -51,10 +59,10 @@
             </objects>
             <point key="canvasLocation" x="1334" y="-502"/>
         </scene>
-        <!--Item-->
+        <!--View Controller-->
         <scene sceneID="lWc-99-BKQ">
             <objects>
-                <viewController id="wsn-Gr-6uq" customClass="ViewController" customModule="FrostedSidebar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="wsn-Gr-6uq" customClass="ViewController" customModule="FrostedSidebar" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="au1-Kd-8M0"/>
                         <viewControllerLayoutGuide type="bottom" id="ih7-Ly-jhN"/>
@@ -63,11 +71,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" image="Background.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="isk-Lh-N8p">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Background.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="isk-Lh-N8p">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <animations/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wsa-Mc-D9E">
-                                <rect key="frame" x="16" y="20" width="19" height="22"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wsa-Mc-D9E">
+                                <rect key="frame" x="20" y="40" width="19" height="18"/>
+                                <animations/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" image="burger"/>
                                 <connections>
@@ -75,19 +85,27 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View Controller 2" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IjJ-cb-LfY">
-                                <rect key="frame" x="235" y="289" width="131" height="21"/>
+                                <rect key="frame" x="234" y="289" width="132" height="21"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Wsa-Mc-D9E" firstAttribute="top" secondItem="au1-Kd-8M0" secondAttribute="bottom" constant="20" id="3If-VF-oVs"/>
+                            <constraint firstAttribute="trailing" secondItem="isk-Lh-N8p" secondAttribute="trailing" id="DpX-Jz-l1u"/>
                             <constraint firstAttribute="centerY" secondItem="IjJ-cb-LfY" secondAttribute="centerY" id="MNg-tq-Tfu"/>
+                            <constraint firstItem="isk-Lh-N8p" firstAttribute="top" secondItem="DIn-Ba-Sh9" secondAttribute="top" id="SJS-BX-XlM"/>
+                            <constraint firstAttribute="bottom" secondItem="isk-Lh-N8p" secondAttribute="bottom" id="aQL-lu-CWB"/>
+                            <constraint firstItem="isk-Lh-N8p" firstAttribute="leading" secondItem="DIn-Ba-Sh9" secondAttribute="leading" id="cAg-9h-mxw"/>
                             <constraint firstAttribute="centerX" secondItem="IjJ-cb-LfY" secondAttribute="centerX" id="feb-QU-6NV"/>
+                            <constraint firstItem="Wsa-Mc-D9E" firstAttribute="leading" secondItem="DIn-Ba-Sh9" secondAttribute="leading" constant="20" id="flN-dG-QF3"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="QNd-BW-RNS"/>
+                    <tabBarItem key="tabBarItem" title="" id="QNd-BW-RNS"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4MC-Dr-mNV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -105,29 +123,47 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" image="Background.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Kgs-SL-9NA">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Background.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Kgs-SL-9NA">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <animations/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rOG-uS-t5o">
-                                <rect key="frame" x="16" y="20" width="19" height="22"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View Controller 3" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ygk-EM-vOX">
+                                <rect key="frame" x="234" y="289" width="132" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rOG-uS-t5o">
+                                <rect key="frame" x="20" y="40" width="19" height="18"/>
+                                <animations/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" image="burger"/>
                                 <connections>
                                     <action selector="onBurger" destination="VA2-Zc-qCQ" eventType="touchUpInside" id="zth-Uy-7ja"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View Controller 3" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ygk-EM-vOX">
-                                <rect key="frame" x="235" y="289" width="131" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="rOG-uS-t5o" firstAttribute="leading" secondItem="XSo-Uo-cvr" secondAttribute="leading" constant="20" id="1OT-N3-lgu"/>
+                            <constraint firstItem="Kgs-SL-9NA" firstAttribute="top" secondItem="XSo-Uo-cvr" secondAttribute="top" id="9Wy-Kx-ZZ1"/>
+                            <constraint firstItem="Kgs-SL-9NA" firstAttribute="leading" secondItem="XSo-Uo-cvr" secondAttribute="leading" id="Ceu-ZS-Bui"/>
                             <constraint firstAttribute="centerX" secondItem="ygk-EM-vOX" secondAttribute="centerX" id="DDR-cZ-UdU"/>
                             <constraint firstAttribute="centerY" secondItem="ygk-EM-vOX" secondAttribute="centerY" id="DTV-Qb-3W6"/>
+                            <constraint firstItem="rOG-uS-t5o" firstAttribute="leading" secondItem="XSo-Uo-cvr" secondAttribute="leadingMargin" constant="20" id="MwS-ci-kD5"/>
+                            <constraint firstItem="rOG-uS-t5o" firstAttribute="top" secondItem="LDU-Sj-WQx" secondAttribute="bottom" constant="20" id="P5N-2L-GDa"/>
+                            <constraint firstAttribute="trailing" secondItem="Kgs-SL-9NA" secondAttribute="trailing" id="Ptf-6E-4D1"/>
+                            <constraint firstItem="rOG-uS-t5o" firstAttribute="top" secondItem="LDU-Sj-WQx" secondAttribute="bottom" constant="20" id="dfl-V7-Bq2"/>
+                            <constraint firstAttribute="bottom" secondItem="Kgs-SL-9NA" secondAttribute="bottom" id="kU2-2G-ws1"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="MwS-ci-kD5"/>
+                                <exclude reference="P5N-2L-GDa"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="prw-r2-Qt3"/>
                 </viewController>
@@ -147,11 +183,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" image="Background.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="GtQ-md-x7x">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Background.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="GtQ-md-x7x">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <animations/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="is7-xQ-eXG">
-                                <rect key="frame" x="16" y="20" width="19" height="22"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="is7-xQ-eXG">
+                                <rect key="frame" x="20" y="40" width="19" height="18"/>
+                                <animations/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" image="burger"/>
                                 <connections>
@@ -159,16 +197,24 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View Controller 4" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OxO-O2-uqr">
-                                <rect key="frame" x="235" y="289" width="131" height="21"/>
+                                <rect key="frame" x="234" y="289" width="132" height="21"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="OxO-O2-uqr" secondAttribute="centerX" id="6I3-8m-zwG"/>
+                            <constraint firstAttribute="bottom" secondItem="GtQ-md-x7x" secondAttribute="bottom" id="6Jg-xP-WeL"/>
+                            <constraint firstItem="GtQ-md-x7x" firstAttribute="leading" secondItem="FC5-nb-nic" secondAttribute="leading" id="KsO-dD-Acu"/>
                             <constraint firstAttribute="centerY" secondItem="OxO-O2-uqr" secondAttribute="centerY" id="hhz-ZS-Ni6"/>
+                            <constraint firstItem="is7-xQ-eXG" firstAttribute="leading" secondItem="FC5-nb-nic" secondAttribute="leading" constant="20" id="uSz-4m-dhT"/>
+                            <constraint firstAttribute="trailing" secondItem="GtQ-md-x7x" secondAttribute="trailing" id="vTP-3a-KWb"/>
+                            <constraint firstItem="GtQ-md-x7x" firstAttribute="top" secondItem="FC5-nb-nic" secondAttribute="top" id="xN4-sf-Dzv"/>
+                            <constraint firstItem="is7-xQ-eXG" firstAttribute="top" secondItem="ZHE-c1-eli" secondAttribute="bottom" constant="20" id="zLW-jM-B9Z"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="YUj-YM-ftx"/>
@@ -185,6 +231,7 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="6jS-hB-otR">
                         <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>

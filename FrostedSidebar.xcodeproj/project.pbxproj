@@ -25,6 +25,7 @@
 		20B553CA19701F1F006165BF /* profile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20B553BB19701F1F006165BF /* profile@2x.png */; };
 		20B553CB19701F1F006165BF /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 20B553BC19701F1F006165BF /* star.png */; };
 		20B553CC19701F1F006165BF /* star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20B553BD19701F1F006165BF /* star@2x.png */; };
+		20E0B9801B6A7A32002A3FED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20E0B97F1B6A7A32002A3FED /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		20B553BB19701F1F006165BF /* profile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "profile@2x.png"; path = "FrostedSidebar/profile@2x.png"; sourceTree = SOURCE_ROOT; };
 		20B553BC19701F1F006165BF /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = star.png; path = FrostedSidebar/star.png; sourceTree = SOURCE_ROOT; };
 		20B553BD19701F1F006165BF /* star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "star@2x.png"; path = "FrostedSidebar/star@2x.png"; sourceTree = SOURCE_ROOT; };
+		20E0B97F1B6A7A32002A3FED /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ../LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 				2008D69B197021D300B89D6C /* AppDelegate.swift */,
 				2008D69C197021D300B89D6C /* ViewController.swift */,
 				2008D69F1970223100B89D6C /* Main.storyboard */,
+				20E0B97F1B6A7A32002A3FED /* LaunchScreen.storyboard */,
 				2008D6A51970231B00B89D6C /* Images.xcassets */,
 				208E5DF1196DBE6F005653B3 /* Supporting Files */,
 			);
@@ -139,7 +142,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0600;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Evan Dekhayser";
 				TargetAttributes = {
 					208E5DED196DBE6F005653B3 = {
@@ -174,6 +177,7 @@
 				20B553BF19701F1F006165BF /* burger.png in Resources */,
 				20B553C219701F1F006165BF /* gear.png in Resources */,
 				20B553C519701F1F006165BF /* globe@2x.png in Resources */,
+				20E0B9801B6A7A32002A3FED /* LaunchScreen.storyboard in Resources */,
 				20B553C019701F1F006165BF /* burger@2x.png in Resources */,
 				20B553CB19701F1F006165BF /* star.png in Resources */,
 				2008D6A01970223100B89D6C /* Main.storyboard in Resources */,
@@ -225,6 +229,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -286,11 +291,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "$(SRCROOT)/FrostedSidebar/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.xappox.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = FrostedSidebar;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -301,11 +306,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "$(SRCROOT)/FrostedSidebar/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.xappox.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = FrostedSidebar;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
