@@ -20,25 +20,14 @@ In the example project, the sidebar is added quite easily.
 Create a property in your UIViewController subclass.
 
 ```swift
-var frostedSidebar: FrostedSidebar = FrostedSidebar(images: imageArray, colors: colorArray, selectedItemIndices: NSIndexSet())
+var frostedSidebar: FrostedSidebar = FrostedSidebar(images: imageArray, colors: colorArray, selectionStyle: chosenSelectionStyle)
 ```
 
-where imageArray contains the icons for the buttons, and colorArray contains the border colors for the icons. 
+where `images` contains the icons for the buttons, `colors` contains the border colors for the icons, and `selectionStyle` is the sidebar items' selection behavior (either `.None`, `.Single`, or `.All`).
 
-The colors parameter is optional, and can either be nil, or be the same length as the imageArray.
+The `colors` parameter is optional, and can either be nil or be the same length as `images`.
 
-In viewDidLoad, set the remaining properties that you want, including,
-
-```swift
-frostedSidebar.delegate                   //instance that receives delegate methods
-frostedSidebar.showFromRight              //default = false
-frostedSidebar.calloutsAlwaysSelected     //default = false, decides if the border is always shown
-frostedSidebar.isSingleSelect             //default = false, if true, only 1 border shown at a time
-```
-
-calloutsAlwaysSelected and isSingleSelect are mutually exclusive. If one is true, the other is automatically set to false. 
-
-The buttons can be set to perform a closure using
+The buttons can be set to use a closure when tapped using
 
 ```swift
 frostedSidebar.actionForIndex[idx] = { /* actions */ }
@@ -48,6 +37,12 @@ To show the sidebar, use the following code in your view controller:
 
 ```swift
 frostedSidebar.showInViewController( self, animated: true )
+```
+
+It can be dismissed in a similar way:
+
+```swift
+frostedSidebar.dismissAnimated(true, completion: nil)
 ```
 
 The class that conforms to the FrostedSidebarDelegate must implement the following methods:

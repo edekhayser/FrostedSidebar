@@ -9,43 +9,131 @@
 import UIKit
 import QuartzCore
 
+/**
+ Delegate for FrostedSidebar.
+*/
 public protocol FrostedSidebarDelegate{
+    /**
+     Delegate method called when FrostedSidebar will show on screen.
+     
+     - Parameter sidebar: The sidebar that will be shown.
+     - Parameter animated: If the sidebar will be animated.
+    */
     func sidebar(sidebar: FrostedSidebar, willShowOnScreenAnimated animated: Bool)
+    /**
+     Delegate method called when FrostedSidebar was shown on screen.
+     
+     - Parameter sidebar: The sidebar that was shown.
+     - Parameter animated: If the sidebar was animated.
+     */
     func sidebar(sidebar: FrostedSidebar, didShowOnScreenAnimated animated: Bool)
+    /**
+     Delegate method called when FrostedSidebar will be dismissed.
+     
+     - Parameter sidebar: The sidebar that will be dismissed.
+     - Parameter animated: If the sidebar will be animated.
+     */
     func sidebar(sidebar: FrostedSidebar, willDismissFromScreenAnimated animated: Bool)
+    /**
+     Delegate method called when FrostedSidebar was dismissed.
+     
+     - Parameter sidebar: The sidebar that was dismissed.
+     - Parameter animated: If the sidebar was animated.
+     */
     func sidebar(sidebar: FrostedSidebar, didDismissFromScreenAnimated animated: Bool)
+    /**
+     Delegate method called when an item was tapped.
+     
+     - Parameter sidebar: The sidebar that's item was tapped.
+     - Parameter index: The index of the tapped item.
+     */
     func sidebar(sidebar: FrostedSidebar, didTapItemAtIndex index: Int)
+    /**
+     Delegate method called when an item was enabled.
+     
+     - Parameter sidebar: The sidebar that's item was tapped.
+     - Parameter itemEnabled: The enabled status of the tapped item.
+     - Parameter index: The index of the tapped item.
+     */
     func sidebar(sidebar: FrostedSidebar, didEnable itemEnabled: Bool, itemAtIndex index: Int)
 }
 
+/**
+ Instance representing the last-used FrostedSidebar in the app.
+*/
 var sharedSidebar: FrostedSidebar?
 
+/**
+ Selection behavior for FrostedSidebar.
+*/
+public enum SidebarItemSelectionStyle{
+    /**
+     No sidebar items are selected.
+    */
+    case None
+    /**
+     Only a single sidebar item is selected.
+    */
+    case Single
+    /**
+     All sidebar items are selected at all times.
+    */
+    case All
+}
+
+/**
+ Animated Sidebar.
+*/
 public class FrostedSidebar: UIViewController {
     
     //MARK: Public Properties
-    
+    /**
+     The width of the sidebar.
+    */
     public var width:                   CGFloat                     = 145.0
+    /**
+     If the sidebar should show from the right.
+    */
     public var showFromRight:           Bool                        = false
+    /**
+     The speed at which the sidebar is presented/dismissed.
+    */
     public var animationDuration:       CGFloat                     = 0.25
+    /**
+     The size of the sidebar items.
+    */
     public var itemSize:                CGSize                      = CGSize(width: 90.0, height: 90.0)
-    public var tintColor:               UIColor                     = UIColor(white: 0.2, alpha: 0.73)
+    /**
+     The background color of the sidebar items.
+    */
     public var itemBackgroundColor:     UIColor                     = UIColor(white: 1, alpha: 0.25)
+    /**
+     The width of the ring around selected sidebar items.
+    */
     public var borderWidth:             CGFloat                     = 2
+    /**
+     The sidebar's delegate.
+    */
     public var delegate:                FrostedSidebarDelegate?     = nil
+    /**
+     A dictionary that holds the actions for each item index.
+    */
     public var actionForIndex:          [Int : ()->()]              = [:]
+    /**
+     The indexes that are selected and have rings around them.
+    */
     public var selectedIndices:         NSMutableIndexSet           = NSMutableIndexSet()
+    /**
+     If the sidebar should be positioned beneath a navigation bar that is on screen.
+    */
     public var adjustForNavigationBar:  Bool                        = false
-    //Only one of these properties can be used at a time. If one is true, the other automatically is false
-    public var isSingleSelect:          Bool                        = false{
+    /**
+     The selection style for the sidebar.
+    */
+    public var selectionStyle:          SidebarItemSelectionStyle   = .None{
         didSet{
-            if isSingleSelect{ calloutsAlwaysSelected = false }
-        }
-    }
-    public var calloutsAlwaysSelected:  Bool                        = false{
-        didSet{
-            if calloutsAlwaysSelected{
-                isSingleSelect = false
-                selectedIndices = NSMutableIndexSet(indexesInRange: NSRange(location: 0,length: images.count) )
+            if case .All = selectionStyle{
+                selectedIndices = NSMutableIndexSet(indexesInRange: NSRange(location: 0, length: images.count))
             }
         }
     }
@@ -62,22 +150,34 @@ public class FrostedSidebar: UIViewController {
     
     //MARK: Public Methods
     
+    /**
+     Returns an object initialized from data in a given unarchiver.
+    */
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-    public init(itemImages: [UIImage], colors: [UIColor]?, selectedItemIndices: NSIndexSet?){
+    /**
+     Returns a sidebar initialized with the given data.
+     
+     - Parameter itemImages: The images that will be used for each item.
+     - Parameter colors: The color of rings around each image.
+     - Parameter selectionStyle: The selection style for the sidebar.
+     
+     - Precondition: `colors` is either `nil` or contains the same number of elements as `itemImages`.
+    */
+    public init(itemImages: [UIImage], colors: [UIColor]?, selectionStyle: SidebarItemSelectionStyle){
         contentView.alwaysBounceHorizontal = false
         contentView.alwaysBounceVertical = true
         contentView.bounces = true
         contentView.clipsToBounds = false
         contentView.showsHorizontalScrollIndicator = false
         contentView.showsVerticalScrollIndicator = false
-        if colors != nil{
-            assert(itemImages.count == colors!.count, "If item color are supplied, the itemImages and colors arrays must be of the same size.")
+        if let colors = colors{
+            assert(itemImages.count == colors.count, "If item color are supplied, the itemImages and colors arrays must be of the same size.")
         }
         
-        selectedIndices = selectedItemIndices != nil ? NSMutableIndexSet(indexSet: selectedItemIndices!) : NSMutableIndexSet()
+        self.selectionStyle = selectionStyle
         borderColors = colors
         images = itemImages
         
@@ -87,9 +187,9 @@ public class FrostedSidebar: UIViewController {
             view.imageView.image = image
             contentView.addSubview(view)
             itemViews += [view]
-            if borderColors != nil{
+            if let borderColors = borderColors{
                 if selectedIndices.containsIndex(index){
-                    let color = borderColors![index]
+                    let color = borderColors[index]
                     view.layer.borderColor = color.CGColor
                 }
             } else{
@@ -98,16 +198,6 @@ public class FrostedSidebar: UIViewController {
         }
         
         super.init(nibName: nil, bundle: nil)
-    }
-    
-    public override func loadView() {
-        super.loadView()
-        view.backgroundColor = UIColor.clearColor()
-        view.addSubview(dimView)
-        view.addSubview(blurView)
-        view.addSubview(contentView)
-        tapGesture = UITapGestureRecognizer(target: self, action: "handleTap:")
-        view.addGestureRecognizer(tapGesture!)
     }
     
     public override func shouldAutorotate() -> Bool {
@@ -125,6 +215,22 @@ public class FrostedSidebar: UIViewController {
         }
     }
     
+    public override func loadView() {
+        super.loadView()
+        view.backgroundColor = UIColor.clearColor()
+        view.addSubview(dimView)
+        view.addSubview(blurView)
+        view.addSubview(contentView)
+        tapGesture = UITapGestureRecognizer(target: self, action: "handleTap:")
+        view.addGestureRecognizer(tapGesture!)
+    }
+    
+    /**
+     Shows the sidebar in a view controller.
+     
+     - Parameter viewController: The view controller in which to show the sidebar.
+     - Parameter animated: If the sidebar should be animated.
+    */
     public func showInViewController(viewController: UIViewController, animated: Bool){
         layoutItems()
         if let bar = sharedSidebar{
@@ -187,13 +293,19 @@ public class FrostedSidebar: UIViewController {
         }
     }
     
+    /**
+     Dismisses the sidebar.
+     
+     - Parameter animated: If the sidebar should be animated.
+     - Parameter completion: Completion handler called when the sidebar is dismissed.
+    */
     public func dismissAnimated(animated: Bool, completion: ((Bool) -> Void)?){
         let completionBlock: (Bool) -> Void = {finished in
             self.removeFromParentViewControllerCallingAppearanceMethods(true)
             self.delegate?.sidebar(self, didDismissFromScreenAnimated: true)
             self.layoutItems()
-            if completion != nil{
-                completion!(finished)
+            if let completion = completion{
+                completion(finished)
             }
         }
         delegate?.sidebar(self, willDismissFromScreenAnimated: animated)
@@ -214,13 +326,18 @@ public class FrostedSidebar: UIViewController {
         }
     }
     
+    /**
+     Selects the item at the given index.
+     
+     - Parameter index: The index of the item to select.
+    */
     public func selectItemAtIndex(index: Int){
         let didEnable = !selectedIndices.containsIndex(index)
-        if borderColors != nil{
-            let stroke = borderColors![index]
+        if let borderColors = borderColors{
+            let stroke = borderColors[index]
             let item = itemViews[index]
             if didEnable{
-                if isSingleSelect{
+                if case .Single = selectionStyle{
                     selectedIndices.removeAllIndexes()
                     for item in itemViews{
                         item.layer.borderColor = UIColor.clearColor().CGColor
@@ -236,11 +353,9 @@ public class FrostedSidebar: UIViewController {
                 selectedIndices.addIndex(index)
                 
             } else{
-                if !isSingleSelect{
-                    if !calloutsAlwaysSelected{
+                if case .None = selectionStyle{
                         item.layer.borderColor = UIColor.clearColor().CGColor
                         selectedIndices.removeIndex(index)
-                    }
                 }
             }
             let pathFrame = CGRect(x: -CGRectGetMidX(item.bounds), y: -CGRectGetMidY(item.bounds), width: item.bounds.size.width, height: item.bounds.size.height)
@@ -281,12 +396,12 @@ public class FrostedSidebar: UIViewController {
         var itemIndex:              Int
         var originalBackgroundColor:UIColor? {
             didSet{
-                self.backgroundColor = originalBackgroundColor
+                backgroundColor = originalBackgroundColor
             }
         }
         
         required init?(coder aDecoder: NSCoder) {
-            self.itemIndex = 0
+            itemIndex = 0
             super.init(coder: aDecoder)
         }
         
@@ -294,7 +409,7 @@ public class FrostedSidebar: UIViewController {
             imageView.backgroundColor = UIColor.clearColor()
             imageView.contentMode = UIViewContentMode.ScaleAspectFit
             itemIndex = index
-            super.init(frame: CGRect.zeroRect)
+            super.init(frame: CGRect.zero)
             addSubview(imageView)
         }
         
@@ -356,8 +471,8 @@ public class FrostedSidebar: UIViewController {
             dismissAnimated(true, completion: nil)
         } else{
             let tapIndex = indexOfTap(recognizer.locationInView(contentView))
-            if tapIndex != nil{
-                selectItemAtIndex(tapIndex!)
+            if let tapIndex = tapIndex{
+                selectItemAtIndex(tapIndex)
             }
         }
     }
@@ -381,8 +496,8 @@ public class FrostedSidebar: UIViewController {
             item.layer.borderColor = UIColor.clearColor().CGColor
             item.alpha = 0
             if selectedIndices.containsIndex(index){
-                if borderColors != nil{
-                    item.layer.borderColor = borderColors![index].CGColor
+                if let borderColors = borderColors{
+                    item.layer.borderColor = borderColors[index].CGColor
                 }
             }
         }
@@ -406,14 +521,14 @@ public class FrostedSidebar: UIViewController {
     }
     
     private func addToParentViewController(viewController: UIViewController, callingAppearanceMethods: Bool){
-        if (parentViewController != nil){
+        if let _ = parentViewController{
             removeFromParentViewControllerCallingAppearanceMethods(callingAppearanceMethods)
         }
         if callingAppearanceMethods{
             beginAppearanceTransition(true, animated: false)
         }
         viewController.addChildViewController(self)
-        viewController.view.addSubview(self.view)
+        viewController.view.addSubview(view)
         didMoveToParentViewController(self)
         if callingAppearanceMethods{
             endAppearanceTransition()
