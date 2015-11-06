@@ -128,6 +128,10 @@ public class FrostedSidebar: UIViewController {
     */
     public var adjustForNavigationBar:  Bool                        = false
     /**
+     Returns whether or not the sidebar is currently being displayed
+    */
+    public var isCurrentlyOpen:         Bool                        = false
+    /**
      The selection style for the sidebar.
     */
     public var selectionStyle:          SidebarItemSelectionStyle   = .None{
@@ -291,6 +295,8 @@ public class FrostedSidebar: UIViewController {
             item.layer.borderWidth = borderWidth
             animateSpringWithView(item, idx: index, initDelay: animationDuration)
         }
+        
+        self.isCurrentlyOpen = true
     }
     
     /**
@@ -324,6 +330,8 @@ public class FrostedSidebar: UIViewController {
         } else{
             completionBlock(true)
         }
+        
+        self.isCurrentlyOpen = false
     }
     
     /**
