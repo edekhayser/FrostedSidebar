@@ -34,8 +34,8 @@
 		2008D69F1970223100B89D6C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = FrostedSidebar/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		2008D6A51970231B00B89D6C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = SOURCE_ROOT; };
 		2066AEA2196DC14A001EE855 /* FrostedSidebar.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.swift; name = FrostedSidebar.swift; path = FrostedSidebar/FrostedSidebar.swift; sourceTree = "<group>"; tabWidth = 4; usesTabs = 0; wrapsLines = 1; };
+		2081B66B1D4AE0E9004D3B04 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../FrostedSidebar/Info.plist; sourceTree = "<group>"; };
 		208E5DEE196DBE6F005653B3 /* FrostedSidebar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FrostedSidebar.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		208E5DF2196DBE6F005653B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = FrostedSidebar/Info.plist; sourceTree = "<group>"; };
 		20A1FAD819B4B1CE00208E92 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabBarController.swift; path = FrostedSidebar/TabBarController.swift; sourceTree = SOURCE_ROOT; };
 		20B553AF19701F1F006165BF /* Background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Background.jpg; path = FrostedSidebar/Background.jpg; sourceTree = SOURCE_ROOT; };
 		20B553B019701F1F006165BF /* burger.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = burger.png; path = FrostedSidebar/burger.png; sourceTree = SOURCE_ROOT; };
@@ -110,7 +110,7 @@
 				20B553BB19701F1F006165BF /* profile@2x.png */,
 				20B553BC19701F1F006165BF /* star.png */,
 				20B553BD19701F1F006165BF /* star@2x.png */,
-				208E5DF2196DBE6F005653B3 /* Info.plist */,
+				2081B66B1D4AE0E9004D3B04 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -142,7 +142,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Evan Dekhayser";
 				TargetAttributes = {
 					208E5DED196DBE6F005653B3 = {

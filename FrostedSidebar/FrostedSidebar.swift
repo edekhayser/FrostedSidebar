@@ -225,7 +225,7 @@ public class FrostedSidebar: UIViewController {
         view.addSubview(dimView)
         view.addSubview(blurView)
         view.addSubview(contentView)
-        tapGesture = UITapGestureRecognizer(target: self, action: "handleTap:")
+        tapGesture = UITapGestureRecognizer(target: self, action: #selector(FrostedSidebar.handleTap(_:)))
         view.addGestureRecognizer(tapGesture!)
     }
     
