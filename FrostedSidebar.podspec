@@ -80,7 +80,7 @@ Swift translucent animated sidebar / hamburger menu using a UIVisualEffectView.
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/edekhayser/FrostedSidebar.git", :tag => "1.0.0" }
+  s.source       = { :git => "https://github.com/edekhayser/FrostedSidebar.git", :tag => "master" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
