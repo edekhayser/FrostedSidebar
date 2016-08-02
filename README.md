@@ -55,6 +55,27 @@ func sidebar(sidebar: FrostedSidebar, didTapItemAtIndex index: Int)
 func sidebar(sidebar: FrostedSidebar, didEnable itemEnabled: Bool, itemAtIndex index: Int)
 ```
 
+## Installation
+
+#### CocoaPods
+You can use [CocoaPods](http://cocoapods.org/) to install `FrostedSidebar` by adding it to your `Podfile`:
+
+```ruby
+platform :ios, '8.0'
+use_frameworks!
+pod 'FrostedSidebar'
+```
+
+To get the full benefits import `FrostedSidebar` wherever you import UIKit
+
+``` swift
+import UIKit
+import FrostedSidebar
+```
+#### Manually
+1. Download and drop ```FrostedSidebar.swift``` in your project.  
+2. Congratulations!  
+
 ##Conclusion##
 
 This would not be possible without the impressive work by Ryan Nystrom, and the great design by [Jakub Antalík on Dribbble](https://dribbble.com/shots/1194205-Sidebar-calendar-animation). 
