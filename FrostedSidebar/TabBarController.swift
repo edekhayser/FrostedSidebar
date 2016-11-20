@@ -15,9 +15,9 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		delegate = self
-		tabBar.hidden = true
+		tabBar.isHidden = true
 		
-		moreNavigationController.navigationBar.hidden = true
+		moreNavigationController.navigationBar.isHidden = true
 		
 		sidebar = FrostedSidebar(itemImages: [
 			UIImage(named: "gear")!,
@@ -35,7 +35,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
 				UIColor(red: 126/255, green: 242/255, blue: 195/255, alpha: 1),
 				UIColor(red: 126/255, green: 242/255, blue: 195/255, alpha: 1),
 				UIColor(red: 119/255, green: 152/255, blue: 255/255, alpha: 1)],
-			selectionStyle: .Single)
+			selectionStyle: .single)
 		sidebar.actionForIndex = [
 			0: {self.sidebar.dismissAnimated(true, completion: { finished in self.selectedIndex = 0}) },
 			1: {self.sidebar.dismissAnimated(true, completion: { finished in self.selectedIndex = 1}) },

@@ -148,6 +148,7 @@
 					208E5DED196DBE6F005653B3 = {
 						CreatedOnToolsVersion = 6.0;
 						DevelopmentTeam = 44SYMBLN5U;
+						LastSwiftMigration = 0810;
 					};
 				};
 			};
@@ -298,6 +299,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.xappox.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = FrostedSidebar;
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -313,6 +315,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.xappox.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = FrostedSidebar;
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
