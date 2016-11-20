@@ -137,7 +137,7 @@ open class FrostedSidebar: UIViewController {
     open var selectionStyle:          SidebarItemSelectionStyle   = .none{
         didSet{
             if case .all = selectionStyle{
-                selectedIndices = NSMutableIndexSet(integersIn: NSRange(location: 0, length: images.count).toRange() ?? 0..<0)
+                selectedIndices = NSMutableIndexSet(indexesIn: NSRange(location: 0, length: images.count))
             }
         }
     }
