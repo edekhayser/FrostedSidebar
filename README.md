@@ -13,7 +13,7 @@ The buttons have the same ring effect on click. The buttons are more customizabl
 
 <p align="center"><img title="Button click animation" src="https://raw.githubusercontent.com/edekhayser/FrostedSidebar/master/callouts.gif"/></p>
 
-##Usage##
+## Usage ##
 
 In the example project, the sidebar is added quite easily.
 
@@ -76,7 +76,7 @@ import FrostedSidebar
 1. Download and drop ```FrostedSidebar.swift``` in your project.  
 2. Congratulations!  
 
-##Conclusion##
+## Conclusion ##
 
 This would not be possible without the impressive work by Ryan Nystrom, and the great design by [Jakub Antalík on Dribbble](https://dribbble.com/shots/1194205-Sidebar-calendar-animation). 
 
